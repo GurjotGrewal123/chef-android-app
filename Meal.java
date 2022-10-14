@@ -1,29 +1,34 @@
+import java.util.ArrayList;
+
 public class Meal {
 
-    private Pref type1;
-    private Pref type2;
-    private Pref type3;
+    private ArrayList<Pref> types;
     private String name;
     private double price;
 
-    public Meal(String name, double price, Pref type1) {
+    public Meal(String name, double price, ArrayList<Pref> types) {
         this.name = name;
         this.price = price;
-        this.type1 = type1;
+        this.types = types;
     }
 
-    public Meal(String name, double price, Pref type1, Pref type2) {
-        this.name = name;
+    public void changePrice(double price) {
         this.price = price;
-        this.type1 = type1;
-        this.type2 = type2;
     }
 
-    public Meal(String name, double price, Pref type1, Pref type2, Pref type3) {
+    public double getPrice() {
+        return price;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
         this.name = name;
-        this.price = price;
-        this.type1 = type1;
-        this.type2 = type2;
-        this.type3 = type3;
+    }
+
+    public ArrayList<Pref> getTypes() {
+        return types;
     }
 }
