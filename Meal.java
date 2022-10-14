@@ -2,11 +2,11 @@ import java.util.ArrayList;
 
 public class Meal {
 
-    private ArrayList<Pref> types;
+    private ArrayList<CuisineTypes> types;
     private String name;
     private double price;
 
-    public Meal(String name, double price, ArrayList<Pref> types) {
+    public Meal(String name, double price, ArrayList<CuisineTypes> types) {
         this.name = name;
         this.price = price;
         this.types = types;
@@ -28,11 +28,12 @@ public class Meal {
         this.name = name;
     }
 
-    public ArrayList<Pref> getTypes() {
+    public ArrayList<CuisineTypes> getTypes() {
         return types;
     }
 
-    public void addType(Pref type) {
+    public void addType(CuisineTypes type) {
         types.add(type);
     }
+
 }

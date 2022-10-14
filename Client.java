@@ -3,7 +3,7 @@ import java.util.HashMap;
 
 public class Client extends Account {
 
-    private ArrayList<Pref> preferences;
+    private ArrayList<CuisineTypes> preferences;
     private Card cardInfo;
     private ArrayList<Meal> favMeals;
     private HashMap<Meal, Integer> ratings;
@@ -12,11 +12,11 @@ public class Client extends Account {
         super(username, password, name, address, accountType);
     }
 
-    public void addPreferences(Pref preference) {
+    public void addPreferences(CuisineTypes preference) {
         preferences.add(preference);
     }
 
-    public ArrayList<Pref> getPreferences() {
+    public ArrayList<CuisineTypes> getPreferences() {
         return preferences;
     }
 
@@ -46,6 +46,10 @@ public class Client extends Account {
 
     public HashMap<Meal, Integer> getRatings() {
         return ratings;
+    }
+
+    public void purchaseMeal(Meal meal, Cook cooker) {
+
     }
 
 }
