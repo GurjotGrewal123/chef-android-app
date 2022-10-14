@@ -31,4 +31,8 @@ public class Meal {
     public ArrayList<Pref> getTypes() {
         return types;
     }
+
+    public void addType(Pref type) {
+        types.add(type);
+    }
 }
