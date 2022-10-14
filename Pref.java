@@ -1,3 +1,3 @@
 public enum Pref {
-    PLACEHOLDER;
+    ITALIAN, INDIAN, BURGERS, SANDWHICHES,;
 }
