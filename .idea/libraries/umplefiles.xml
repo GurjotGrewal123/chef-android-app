@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="umplefiles">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/umplefiles.zip!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
