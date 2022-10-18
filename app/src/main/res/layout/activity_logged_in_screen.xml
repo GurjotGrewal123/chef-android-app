@@ -23,7 +23,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="15sp"
-            android:fontFamily="@font/alata"
+            android:fontFamily="sans-serif"
             android:text="@string/welcome_placeholder_what_would_you_like_to_do_today"
             android:textAlignment="center"
             android:textSize="24sp" />
@@ -33,7 +33,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="10sp"
-            android:fontFamily="@font/alata"
+            android:fontFamily="sans-serif"
             android:text="@string/more_features_coming_soon"
             android:textAlignment="center"
             android:textSize="20sp" />

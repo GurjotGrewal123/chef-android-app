@@ -11,7 +11,9 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:gravity="center_horizontal"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        tools:layout_editor_absoluteX="30dp"
+        tools:layout_editor_absoluteY="25dp">
 
         <View
             android:layout_width="match_parent"
@@ -23,7 +25,7 @@
             android:id="@+id/titleScreenP1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/alata"
+            android:fontFamily="sans-serif"
             android:gravity="center"
             android:text="@string/welcome_to"
             android:textSize="30sp" />
@@ -33,7 +35,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="25sp"
-            android:fontFamily="@font/alata"
+            android:fontFamily="sans-serif"
             android:text="@string/cuisine_royale"
             android:textSize="35sp" />
 
@@ -50,9 +52,11 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="20sp"
             android:ems="10"
+            android:fontFamily="sans-serif"
             android:gravity="center"
             android:hint="@string/enter_username"
-            android:inputType="textPersonName" />
+            android:inputType="textPersonName"
+            android:minHeight="48dp" />
 
         <EditText
             android:id="@+id/passwordInputField"
@@ -60,9 +64,11 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="30sp"
             android:ems="10"
+            android:fontFamily="sans-serif"
             android:gravity="center"
             android:hint="@string/enter_password"
-            android:inputType="textPassword" />
+            android:inputType="textPassword"
+            android:minHeight="48dp" />
 
         <Button
             android:id="@+id/loginButton"
@@ -70,7 +76,7 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="10sp"
             android:backgroundTint="#FF9800"
-            android:fontFamily="@font/alata"
+            android:fontFamily="sans-serif"
             android:text="@string/login" />
 
         <Button
@@ -78,7 +84,7 @@
             android:layout_width="150sp"
             android:layout_height="wrap_content"
             android:backgroundTint="#FF9800"
-            android:fontFamily="@font/alata"
+            android:fontFamily="sans-serif"
             android:text="@string/register_as_a_client" />
 
         <Button
@@ -86,7 +92,7 @@
             android:layout_width="150sp"
             android:layout_height="wrap_content"
             android:backgroundTint="#FF9800"
-            android:fontFamily="@font/alata"
+            android:fontFamily="sans-serif"
             android:text="@string/register_as_a_cook" />
 
     </LinearLayout>
