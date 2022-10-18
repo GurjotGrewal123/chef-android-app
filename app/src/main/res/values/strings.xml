@@ -1,0 +1,28 @@
+<resources>
+    <string name="app_name">SEG2105 Project</string>
+    <string name="welcome_to">Welcome To</string>
+    <string name="cuisine_royale">Cuisine Royale™</string>
+    <string name="enter_username">Enter Username</string>
+    <string name="enter_password">Enter Password</string>
+    <string name="login">Login</string>
+    <string name="register">Register</string>
+    <string name="please_enter_all_the_required_information_to_register">Please enter all the required information to register</string>
+    <string name="enter_first_name">Enter First Name</string>
+    <string name="enter_last_name">Enter Last Name</string>
+    <string name="enter_password_registration">Enter Password</string>
+    <string name="enter_email">Enter Email</string>
+    <string name="enter_address">Enter Address</string>
+    <string name="enter_card_number">Enter Card Number</string>
+    <string name="mm_yy">MM/YY</string>
+    <string name="cvv">CVV</string>
+    <string name="finish_registration">Finish Registration</string>
+    <string name="register_as_a_user">Register as A User</string>
+    <string name="register_as_a_chef">Register as A Chef</string>
+    <string name="enter_a_short_description_of_yourself">Enter a Short Description of Yourself</string>
+    <string name="upload_void_cheque">Upload Void Cheque</string>
+    <string name="complete_registration">Complete Registration</string>
+    <string name="welcome_placeholder_what_would_you_like_to_do_today">Welcome placeholder! What would you like to do today?</string>
+    <string name="more_features_coming_soon">More features coming soon!</string>
+    <string name="register_as_a_client">Register as a Client</string>
+    <string name="register_as_a_cook">Register As a Cook</string>
+</resources>
