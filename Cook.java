@@ -9,6 +9,16 @@ public class Cook extends Account {
     private HashMap<Meal, Integer> ratings;
     private ArrayList<CuisineTypes> cuisine;
 
+    /**
+     *
+     * @param username
+     * @param password
+     * @param name
+     * @param address
+     * @param accountType
+     *
+     */
+
     public Cook(String username, String password, String name, Address address, AccountType accountType) {
         super(username, password, name, address, accountType);
     }

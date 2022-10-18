@@ -8,6 +8,15 @@ public class Client extends Account {
     private ArrayList<Meal> favMeals;
     private HashMap<Meal, Integer> ratings;
 
+    /**
+     *
+     * @param username
+     * @param password
+     * @param name
+     * @param address
+     * @param accountType
+     */
+
     public Client(String username, String password, String name, Address address, AccountType accountType) {
         super(username, password, name, address, accountType);
     }

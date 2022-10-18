@@ -6,6 +6,17 @@ public class Meal {
     private String name;
     private double price;
 
+    /**
+     *
+     * @param name holds the name of the meal as assigned to by a Cook
+     * @param price holds the price as assigned to by a Cook
+     * @param types holds the type the meal falls under within the dish types available in the CuisineTypes enum
+     *
+     * This class is the core of the app, as this is what the Client instances will be ordering from the Cook instances
+     * Precondition: types is a parameter that is found in CuisineTypes
+     *
+     */
+
     public Meal(String name, double price, ArrayList<CuisineTypes> types) {
         this.name = name;
         this.price = price;

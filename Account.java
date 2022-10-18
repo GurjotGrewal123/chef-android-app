@@ -5,6 +5,18 @@ public abstract class Account {
     private Address address;
     private AccountType accountType;
 
+    /**
+     *
+     * @param username holds the account's username
+     * @param password holds the account's password
+     * @param name holds the personal name associated with its account instance
+     * @param address holds the address associated with its account instance
+     * @param accountType holds the account type of said account instance
+     *
+     * This class is an abstract class which the classes Client, Administrator and Cook are based off
+     *
+     */
+
     protected Account(String username, String password, String name, Address address,
             AccountType accountType) {
         this.username = username;
