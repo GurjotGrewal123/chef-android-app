@@ -87,7 +87,7 @@ public class CookSignUpScreen extends AppCompatActivity {
                 if(task.isSuccessful()){
                     Cook cook = new Cook(emailReg, user, pass, name, address);
 
-                    FirebaseDatabase.getInstance().getReference("cooks")
+                    FirebaseDatabase.getInstance().getReference("accounts")
                             .child(FirebaseAuth.getInstance().getCurrentUser().getUid())
                             .setValue(cook).addOnCompleteListener(new OnCompleteListener<Void>() {
                                 @Override

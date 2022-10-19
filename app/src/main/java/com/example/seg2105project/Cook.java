@@ -21,7 +21,11 @@ public class Cook extends Account {
      */
 
     public Cook(String email, String username, String password, String name, Address address) {
-        super(email, username, password, name, address);
+        super(email, username, password, name, address, AccountType.COOK);
+    }
+
+    public Cook(){
+
     }
 
     public void addCuisineType(CuisineTypes type) {

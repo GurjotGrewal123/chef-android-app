@@ -26,6 +26,10 @@ public class Address {
         this.postalCode = postalCode;
     }
 
+    public Address(){
+
+    }
+
     public void setStreet(String street){
         this.street = street;
     }

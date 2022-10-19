@@ -19,8 +19,12 @@ public class Client extends Account {
      */
 
     public Client(String email, String username, String password, String name, Address address, Card card) {
-        super(email, username, password, name, address);
+        super(email, username, password, name, address, AccountType.CLIENT);
         cardInfo = card;
+    }
+
+    public Client(){
+
     }
 
     public void addPreferences(CuisineTypes preference) {

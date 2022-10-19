@@ -35,8 +35,6 @@ public class ClientSignUpScreen extends AppCompatActivity {
     EditText securityCode;
     EditText exp;
 
-    DatabaseReference databaseClients;
-
     FirebaseAuth mAuth;
 
     @Override
@@ -46,7 +44,6 @@ public class ClientSignUpScreen extends AppCompatActivity {
 
         mAuth = FirebaseAuth.getInstance();
 
-        databaseClients = FirebaseDatabase.getInstance().getReference().child("clients");
         homeBtn = findViewById(R.id.homeBtn2);
         registerClientBtn = findViewById(R.id.registerationCompleteButton);
         clientFirstName = findViewById(R.id.inputNameClient);
@@ -98,7 +95,7 @@ public class ClientSignUpScreen extends AppCompatActivity {
                 if(task.isSuccessful()){
                     Client client = new Client(emailReg, user, pass, name, address, card);
 
-                    FirebaseDatabase.getInstance().getReference("clients")
+                    FirebaseDatabase.getInstance().getReference("accounts")
                             .child(FirebaseAuth.getInstance().getCurrentUser().getUid())
                             .setValue(client).addOnCompleteListener(new OnCompleteListener<Void>() {
                                 @Override

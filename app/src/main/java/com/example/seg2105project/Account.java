@@ -6,6 +6,7 @@ public abstract class Account {
     private String password;
     private String name;
     private Address address;
+    private AccountType type;
 
     /**
      * @param username holds the account's username
@@ -17,13 +18,19 @@ public abstract class Account {
      *                 Administrator and Cook are based off
      */
 
-    protected Account(String email, String username, String password, String name, Address address) {
+    protected Account(String email, String username, String password, String name, Address address, AccountType type) {
         this.email = email;
         this.username = username;
         this.password = password;
         this.name = name;
         this.address = address;
+        this.type = type;
     }
+
+    protected Account(){
+
+    }
+
     public void setEmail(String email) {
         this.email = email;
     }
@@ -62,5 +69,12 @@ public abstract class Account {
 
     public void setAddress(Address address){
         this.address = address;
+    }
+
+    public void setType(AccountType type) {
+        this.type = type;
+    }
+    public AccountType getType(){
+        return type;
     }
 }

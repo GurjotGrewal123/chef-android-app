@@ -15,7 +15,11 @@ public class Administrator extends Account {
      */
 
     public Administrator(String email, String username, String password, String name, Address address) {
-        super(email, username, password, name, address);
+        super(email, username, password, name, address, AccountType.ADMIN);
+    }
+
+    public Administrator(){
+
     }
 
     public void deleteAccount() {

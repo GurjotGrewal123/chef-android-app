@@ -25,6 +25,10 @@ public class Meal {
         this.types = types;
     }
 
+    public Meal(){
+
+    }
+
     public void changePrice(double price) {
         this.price = price;
     }

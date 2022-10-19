@@ -27,6 +27,10 @@ public class Card {
         this.expiryDate = expiryDate;
     }
 
+    public Card(){
+
+    }
+
     public void setCardOnName(String nameOnCard){
         this.nameOnCard = nameOnCard;
     }
