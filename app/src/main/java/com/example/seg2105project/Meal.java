@@ -1,3 +1,5 @@
+package com.example.seg2105project;
+
 import java.util.ArrayList;
 
 public class Meal {

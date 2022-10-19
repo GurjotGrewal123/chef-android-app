@@ -1,3 +1,5 @@
+package com.example.seg2105project;
+
 public class Administrator extends Account {
 
     /**
@@ -6,15 +8,14 @@ public class Administrator extends Account {
      * @param password
      * @param name
      * @param address
-     * @param accountType
      *
      * This class extends our abstract Account class, and is the class responsible for allowing users
      * of the Admin instance to moderate our application
      *
      */
 
-    public Administrator(String username, String password, String name, Address address, AccountType accountType) {
-        super(username, password, name, address, accountType);
+    public Administrator(String email, String username, String password, String name, Address address) {
+        super(email, username, password, name, address);
     }
 
     public void deleteAccount() {

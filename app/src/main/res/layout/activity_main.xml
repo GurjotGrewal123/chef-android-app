@@ -47,14 +47,14 @@
             app:srcCompat="@drawable/seg2105logo" />
 
         <EditText
-            android:id="@+id/usernameInputField"
+            android:id="@+id/emailInputField"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="20sp"
             android:ems="10"
             android:fontFamily="sans-serif"
             android:gravity="center"
-            android:hint="@string/enter_username"
+            android:hint="Enter Email"
             android:inputType="textPersonName"
             android:minHeight="48dp" />
 

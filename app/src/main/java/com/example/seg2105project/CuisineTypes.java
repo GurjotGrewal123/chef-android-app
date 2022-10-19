@@ -1,3 +1,5 @@
+package com.example.seg2105project;
+
 public enum CuisineTypes {
     // Holds the types of dishes that our app supports
 
