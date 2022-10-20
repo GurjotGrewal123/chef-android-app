@@ -41,8 +41,8 @@ public class LoggedInScreen extends AppCompatActivity {
                 else if (snapshot.getValue(Cook.class) != null) {
                     userProfile = snapshot.getValue(Cook.class);
                 }
-                else{
-
+                else if (snapshot.getValue(Administrator.class) != null){
+                    userProfile = snapshot.getValue(Administrator.class);
                 }
 
                 if (userProfile != null) {
@@ -51,6 +51,9 @@ public class LoggedInScreen extends AppCompatActivity {
                     }
                     else if (userProfile.getType() == AccountType.COOK){
                         userRole.setText("You are signed in as a cook");
+                    }
+                    else if (userProfile.getType() == AccountType.ADMIN){
+                        userRole.setText("You are signed in as an admin");
                     }
                 }
                 else{
