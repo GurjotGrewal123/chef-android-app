@@ -1,3 +1,5 @@
+package com.example.seg2105project;
+
 import java.util.ArrayList;
 
 public class Meal {
@@ -21,6 +23,10 @@ public class Meal {
         this.name = name;
         this.price = price;
         this.types = types;
+    }
+
+    public Meal(){
+
     }
 
     public void changePrice(double price) {

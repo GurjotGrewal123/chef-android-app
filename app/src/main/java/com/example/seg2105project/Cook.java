@@ -1,3 +1,5 @@
+package com.example.seg2105project;
+
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -15,12 +17,15 @@ public class Cook extends Account {
      * @param password
      * @param name
      * @param address
-     * @param accountType
      *
      */
 
-    public Cook(String username, String password, String name, Address address, AccountType accountType) {
-        super(username, password, name, address, accountType);
+    public Cook(String email, String username, String password, String name, Address address) {
+        super(email, username, password, name, address, AccountType.COOK);
+    }
+
+    public Cook(){
+
     }
 
     public void addCuisineType(CuisineTypes type) {

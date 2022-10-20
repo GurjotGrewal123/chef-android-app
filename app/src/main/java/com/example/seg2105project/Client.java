@@ -1,3 +1,5 @@
+package com.example.seg2105project;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -14,11 +16,15 @@ public class Client extends Account {
      * @param password
      * @param name
      * @param address
-     * @param accountType
      */
 
-    public Client(String username, String password, String name, Address address, AccountType accountType) {
-        super(username, password, name, address, accountType);
+    public Client(String email, String username, String password, String name, Address address, Card card) {
+        super(email, username, password, name, address, AccountType.CLIENT);
+        cardInfo = card;
+    }
+
+    public Client(){
+
     }
 
     public void addPreferences(CuisineTypes preference) {
