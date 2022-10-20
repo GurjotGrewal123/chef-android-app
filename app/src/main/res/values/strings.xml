@@ -25,4 +25,10 @@
     <string name="more_features_coming_soon">More features coming soon!</string>
     <string name="register_as_a_client">Register as a Client</string>
     <string name="register_as_a_cook">Register As a Cook</string>
+    <string name="log_out">Log Out</string>
+    <string name="enter_street_address">Enter Street Address</string>
+    <string name="enter_city">Enter City</string>
+    <string name="enter_country">Enter Country</string>
+    <string name="enter_zip">Enter ZIP</string>
+    <string name="home">Home</string>
 </resources>

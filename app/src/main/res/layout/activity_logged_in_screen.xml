@@ -11,8 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="50sp"
         android:background="#FF9800" />
-    <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-        android:layout_width="fill_parent" android:layout_height="fill_parent">
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -51,7 +50,14 @@
             android:layout_height="wrap_content"
             android:textAlignment="center"
             android:textSize="20sp" />
+
+        <Button
+            android:id="@+id/button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#FF9800"
+            android:fontFamily="@font/alata"
+            android:text="@string/log_out" />
     </LinearLayout>
-    </ScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
