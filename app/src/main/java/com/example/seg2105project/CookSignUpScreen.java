@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -79,6 +80,64 @@ public class CookSignUpScreen extends AppCompatActivity {
         Address address = new Address(street.getText().toString(), city.getText().toString(), country.getText().toString(), postal.getText().toString());
         String user = username.getText().toString();
         String pass = password.getText().toString();
+
+        if(cookFirstName.getText().toString().isEmpty()){
+            cookFirstName.setError("Full name is required");
+            cookFirstName.requestFocus();
+            return;
+        }
+        if(cookLastName.getText().toString().isEmpty()){
+            cookLastName.setError("Last name is required");
+            cookLastName.requestFocus();
+            return;
+        }
+        if(username.getText().toString().isEmpty()){
+            username.setError("Username name is required");
+            username.requestFocus();
+            return;
+        }
+        if(password.getText().toString().isEmpty()){
+            password.setError("Password is required");
+            password.requestFocus();
+            return;
+        }
+        if(pass.length() < 6){
+            password.setError("Password needs to be longer than 6 characters");
+            password.requestFocus();
+            return;
+        }
+        if(email.getText().toString().isEmpty()){
+            email.setError("Email is required");
+            email.requestFocus();
+            return;
+        }
+        if(!(emailReg).matches("[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+")){
+            street.setError("Not a valid email type eg. user_name@gmail.com");
+            street.requestFocus();
+            return;
+        }
+        if(street.getText().toString().isEmpty()){
+            street.setError("Street name is required");
+            street.requestFocus();
+            return;
+        }
+        if(city.getText().toString().isEmpty()){
+            city.setError("City name is required");
+            city.requestFocus();
+            return;
+        }
+        if(country.getText().toString().isEmpty()){
+            country.setError("Country name is required");
+            country.requestFocus();
+            return;
+        }
+        if(postal.getText().toString().isEmpty()){
+            postal.setError("Postal code is required");
+            postal.requestFocus();
+            return;
+        }
+
+
         Cook cook = new Cook(emailReg, user, pass, name, address);
 
         mAuth.createUserWithEmailAndPassword(emailReg, pass).addOnCompleteListener(new OnCompleteListener<AuthResult>() {

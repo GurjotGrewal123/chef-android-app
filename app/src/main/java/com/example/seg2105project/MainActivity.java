@@ -8,6 +8,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 
 import android.text.TextUtils;
+import android.util.Patterns;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -98,6 +99,22 @@ public class MainActivity extends AppCompatActivity {
     public void loginUser(){
         String emailLog = email.getText().toString();
         String password = pass.getText().toString();
+
+        if(email.getText().toString().isEmpty()){
+            email.setError("Email is required");
+            email.requestFocus();
+            return;
+        }
+        if(!(emailLog).matches("[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+")){
+            email.setError("Not a valid email type eg. user_name@gmail.com");
+            email.requestFocus();
+            return;
+        }
+        if(pass.getText().toString().isEmpty()){
+            pass.setError("Password is required");
+            pass.requestFocus();
+            return;
+        }
 
         mAuth.signInWithEmailAndPassword(emailLog, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override
