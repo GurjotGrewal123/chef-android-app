@@ -6,9 +6,18 @@ import java.util.HashMap;
 
 public class Cook extends Account {
 
+    /**
+     * holds the list of complaints that are against a specific cook
+     */
     private ArrayList<String> complaintsAgainst;
+    /**
+     * hold the list of meals that a cook offers
+     */
     private ArrayList<Meal> menu;
     private HashMap<Meal, Integer> ratings;
+    /**
+     * list of the types of cuisine that a cook can offer
+     */
     private ArrayList<CuisineTypes> cuisine;
 
     /**

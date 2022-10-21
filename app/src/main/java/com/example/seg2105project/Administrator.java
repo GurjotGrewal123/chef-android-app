@@ -21,7 +21,7 @@ public class Administrator extends Account {
     public Administrator(){
 
     }
-
+    // currently the below methods are not required for the current iteration of the app and will be implemented at a later sprint
     public void deleteAccount() {
         //WORK IN PROGRESS
     }

@@ -16,6 +16,10 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+/**
+ * this class if for the main log in screen. all users will see this screen and then be redirected according to their account type.
+ *
+ */
 public class LoggedInScreen extends AppCompatActivity {
 
     private FirebaseUser user;
