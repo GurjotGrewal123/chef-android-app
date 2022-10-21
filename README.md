@@ -8,3 +8,5 @@ Alexander Wilson, 300219585 Jastes33
 
 ADMIN Username: Jadbader7@gmail.com 
 ADMIN Password: jad123
+
+github: https://github.com/Jastes33/SEG2105_ProjectGroup4.git
