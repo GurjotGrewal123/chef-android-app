@@ -3,6 +3,7 @@ package com.example.seg2105project;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -37,6 +38,14 @@ public class LoggedInScreen extends AppCompatActivity {
         userID = user.getUid();
 
         final TextView userRole = findViewById(R.id.roleSpecifier);
+
+        logOutButton = findViewById(R.id.logOutButton);
+        logOutButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                logOut();
+            }
+        });
 
         reference.child(userID).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -76,13 +85,9 @@ public class LoggedInScreen extends AppCompatActivity {
         });
     }
 
-    public void logOutOnClick(){
-        logOutButton = findViewById(R.id.logOutButton);
-        logOutButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                finish();
-            }
-        });
+    public void logOut(){
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
     }
+
 }
