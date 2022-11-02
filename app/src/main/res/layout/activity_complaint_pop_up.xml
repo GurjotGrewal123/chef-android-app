@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".complaintPopUp">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/nameOfCook"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="10sp"
+            android:fontFamily="@font/alata" />
+
+        <TextView
+            android:id="@+id/complaintForCook"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/nameOfCook"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="10sp"
+            android:fontFamily="@font/alata" />
+
+        <TextView
+            android:id="@+id/adminPrompt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/complaintForCook"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="10sp"
+            android:fontFamily="@font/alata"
+            android:text="What would you like to do with this user?"
+            android:textSize="20sp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/adminPrompt"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <Button
+                android:id="@+id/tempSuspend"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:backgroundTint="#FF9800"
+                android:text="Temporarily Suspend Cook" />
+
+            <Button
+                android:id="@+id/permaSuspend"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignWithParentIfMissing="false"
+                android:backgroundTint="#FF9800"
+                android:text="Permanently Suspend Cook" />
+
+            <Button
+                android:id="@+id/dissmissComplaint"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:backgroundTint="#FF9800"
+                android:text="Dismiss Complaint" />
+
+            <Button
+                android:id="@+id/returnButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:backgroundTint="#FF9800"
+                android:text="Cancel" />
+        </LinearLayout>
+
+    </RelativeLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
