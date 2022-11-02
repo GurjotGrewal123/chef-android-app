@@ -10,3 +10,20 @@ ADMIN Username: Jadbader7@gmail.com
 ADMIN Password: jad123
 
 github: https://github.com/Jastes33/SEG2105_ProjectGroup4.git
+
+Class list 
+    Account
+    AccountType
+    Address
+    Administrator
+    Card
+    Client
+    ClientSignUpScreen
+    Complaint
+    Cook
+    CookSignUpScreen
+    CuisineTypes
+    LoggedInScreen
+    MainActivity
+    Meal
+

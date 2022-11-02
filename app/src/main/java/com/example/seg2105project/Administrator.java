@@ -21,21 +21,27 @@ public class Administrator extends Account {
     public Administrator(){
 
     }
+
+    public void createSuspension(Cook cook , Complaint c) {
+        cook.isSuspension();
+        if(c!=null) {
+            cook.addComplaints(c);
+        }
+    }
+
+    public void approveCook(Cook cook) {
+        cook.endSuspension();
+    }
+
     // currently the below methods are not required for the current iteration of the app and will be implemented at a later sprint
     public void deleteAccount() {
         //WORK IN PROGRESS
     }
 
-    public void reviewComplaint() {
+    public void reviewComplaint(Cook cook) {
+        cook.getComplaints();
         //WORK IN PROGRESS
-    }
 
-    public void createSuspension() {
-        //WORK IN PROGRESS
-    }
-
-    public void approveCook() {
-        //WORK IN PROGRESS
     }
 
     public void banAccount() {
