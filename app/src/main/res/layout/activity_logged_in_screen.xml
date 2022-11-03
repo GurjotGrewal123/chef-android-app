@@ -59,6 +59,7 @@
             android:fontFamily="@font/alata"
             android:onClick="logOutOnClick"
             android:text="@string/log_out" />
+
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

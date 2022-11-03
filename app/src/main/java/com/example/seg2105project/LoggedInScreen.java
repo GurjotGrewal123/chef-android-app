@@ -69,7 +69,8 @@ public class LoggedInScreen extends AppCompatActivity {
                         userRole.setText("You are signed in as a cook");
                     }
                     else if (userProfile.getType() == AccountType.ADMIN){
-                        userRole.setText("You are signed in as an admin");
+                        setContentView(R.layout.activity_admin_logged_in_screen);
+                        //userRole.setText("You are signed in as an admin");
                     }
                 }
                 else{
