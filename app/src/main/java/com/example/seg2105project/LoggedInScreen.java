@@ -37,6 +37,7 @@ public class LoggedInScreen extends AppCompatActivity {
         reference = FirebaseDatabase.getInstance().getReference("accounts");
         userID = user.getUid();
 
+
         final TextView userRole = findViewById(R.id.roleSpecifier);
 
         logOutButton = findViewById(R.id.logOutButton);
