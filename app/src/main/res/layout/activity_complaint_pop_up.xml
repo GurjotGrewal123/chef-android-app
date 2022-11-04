@@ -19,7 +19,7 @@
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
             android:layout_marginBottom="10sp"
-            android:fontFamily="@font/alata" />
+            android:fontFamily="sans-serif" />
 
         <TextView
             android:id="@+id/complaintForCook"
@@ -28,7 +28,7 @@
             android:layout_below="@id/nameOfCook"
             android:layout_centerHorizontal="true"
             android:layout_marginBottom="10sp"
-            android:fontFamily="@font/alata" />
+            android:fontFamily="sans-serif" />
 
         <TextView
             android:id="@+id/adminPrompt"
@@ -37,7 +37,7 @@
             android:layout_below="@id/complaintForCook"
             android:layout_centerHorizontal="true"
             android:layout_marginBottom="10sp"
-            android:fontFamily="@font/alata"
+            android:fontFamily="sans-serif"
             android:text="What would you like to do with this user?"
             android:textSize="20sp" />
 

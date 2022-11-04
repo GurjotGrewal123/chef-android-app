@@ -24,7 +24,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="15sp"
-            android:fontFamily="@font/alata"
+            android:fontFamily="sans-serif"
             android:text="Welcome to the complaints screen! Here is a list of all available complaints:"
             android:textAlignment="center"
             android:textSize="20sp" />

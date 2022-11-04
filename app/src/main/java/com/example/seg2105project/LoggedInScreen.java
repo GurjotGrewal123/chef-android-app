@@ -70,8 +70,7 @@ public class LoggedInScreen extends AppCompatActivity {
                         userRole.setText("You are signed in as a cook");
                     }
                     else if (userProfile.getType() == AccountType.ADMIN){
-                        setContentView(R.layout.activity_admin_logged_in_screen);
-                        //userRole.setText("You are signed in as an admin");
+                        launchAdmin();
                     }
                 }
                 else{
@@ -89,6 +88,11 @@ public class LoggedInScreen extends AppCompatActivity {
 
     public void logOut(){
         Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
+    }
+
+    public void launchAdmin(){
+        Intent intent = new Intent(this, AdminLoggedInScreen.class);
         startActivity(intent);
     }
 

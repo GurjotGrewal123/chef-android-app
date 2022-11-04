@@ -38,14 +38,16 @@
             android:id="@+id/roleSpecifier"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:fontFamily="sans-serif"
             android:textAlignment="center"
             android:textSize="20sp" />
 
         <Button
-            android:id="@+id/complaintsButton"
+            android:id="@+id/complaintButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:backgroundTint="#FF9800"
+            android:fontFamily="sans-serif"
             android:text="Review Complaints" />
 
         <Button
@@ -53,7 +55,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:backgroundTint="#FF9800"
-            android:fontFamily="@font/alata"
+            android:fontFamily="sans-serif"
             android:onClick="logOutOnClick"
             android:text="@string/log_out" />
     </LinearLayout>

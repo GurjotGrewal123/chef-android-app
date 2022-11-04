@@ -20,7 +20,7 @@
                 android:value="" />
         </activity>
         <activity
-            android:name=".complaintsReviewScreen"
+            android:name=".ComplaintsReviewScreen"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
