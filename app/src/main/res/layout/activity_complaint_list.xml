@@ -15,14 +15,14 @@
             android:id="@+id/cookName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/alata"
+            android:fontFamily="sans-serif"
             android:text="Cook:" />
 
         <TextView
             android:id="@+id/dateSubmittedComplaint"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/alata"
+            android:fontFamily="sans-serif"
             android:text="Date Submitted:" />
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -38,7 +38,7 @@ public class ComplaintsReviewScreen extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_complaints_review_screen);
         reference = FirebaseDatabase.getInstance().getReference("complaints");
-
+        complaints = findViewById(R.id.complaintsList);
         complaintsList = new ArrayList<>();
         onItemLongClick();
 
