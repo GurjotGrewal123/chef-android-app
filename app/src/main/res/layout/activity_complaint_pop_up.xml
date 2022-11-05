@@ -57,6 +57,13 @@
                 android:text="Permanently Suspend Cook" />
 
             <Button
+                android:id="@+id/tempSuspend"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:backgroundTint="#FF9800"
+                android:text="Temporarily Suspend Cook" />
+
+            <Button
                 android:id="@+id/dissmissComplaint"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -70,13 +77,6 @@
                 android:backgroundTint="#FF9800"
                 android:text="Cancel" />
         </LinearLayout>
-
-        <Button
-            android:id="@+id/tempSuspend"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:backgroundTint="#FF9800"
-            android:text="Temporarily Suspend Cook" />
 
     </RelativeLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

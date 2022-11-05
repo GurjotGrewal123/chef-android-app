@@ -9,6 +9,7 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import android.os.Bundle;
 import android.widget.ArrayAdapter;
@@ -22,7 +23,7 @@ public class ComplaintsReviewScreen extends AppCompatActivity {
 
     DatabaseReference reference;
     ListView complaints;
-    ArrayList<String> complaintList = new ArrayList<>();
+    List<Complaint> complaintsList;
     ArrayAdapter arrayAdapter;
 
     @Override
@@ -30,32 +31,27 @@ public class ComplaintsReviewScreen extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_complaints_review_screen);
         reference = FirebaseDatabase.getInstance().getReference("complaints");
-        reference.setValue(new Complaint());
-        complaints = findViewById(R.id.complaintsList);
-        arrayAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, complaintList);
-        complaints.setAdapter(arrayAdapter);
 
-        reference.addChildEventListener(new ChildEventListener() {
+        complaintsList = new ArrayList<>();
+
+        //TO BE IMPLEMENTED
+        addComplaint();
+        onItemLongClick();
+
+    }
+
+    protected void onStart(){
+        super.onStart();
+        reference.addValueEventListener(new ValueEventListener() {
             @Override
-            public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
-                String value = snapshot.getValue(Complaint.class).toString();
-                complaintList.add(value);
-                arrayAdapter.notifyDataSetChanged();
-            }
-
-            @Override
-            public void onChildChanged(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
-
-            }
-
-            @Override
-            public void onChildRemoved(@NonNull DataSnapshot snapshot) {
-
-            }
-
-            @Override
-            public void onChildMoved(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
-
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                complaintsList.clear();
+                for(DataSnapshot postSnapshot: dataSnapshot.getChildren()){
+                    Complaint complaint = postSnapshot.getValue(Complaint.class);
+                    complaintsList.add(complaint);
+                }
+                ComplaintList complaintAdapter = new ComplaintList(ComplaintsReviewScreen.this, complaintsList);
+                complaints.setAdapter(complaintAdapter);
             }
 
             @Override
