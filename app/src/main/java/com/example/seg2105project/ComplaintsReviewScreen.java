@@ -48,7 +48,7 @@ public class ComplaintsReviewScreen extends AppCompatActivity {
         super.onStart();
         reference.addValueEventListener(new ValueEventListener() {
             @Override
-            public void onDataChange(@NonNull DataSnapshot datasnapshot) {
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 complaintsList.clear();
                 for(DataSnapshot postSnapshot: dataSnapshot.getChildren()){
                     Complaint complaint = postSnapshot.getValue(Complaint.class);
