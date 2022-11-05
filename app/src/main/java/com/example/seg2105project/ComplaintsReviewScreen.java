@@ -95,6 +95,42 @@ public class ComplaintsReviewScreen extends AppCompatActivity {
         complaintText.setText(date);
         final AlertDialog b = dialogBuilder.create();
         b.show();
+        permenantlySuspend.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                pSuspend();
+
+            }
+        });
+        temporarilySuspend.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                tSuspend();
+            }
+        });
+        dismissComplaint.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                disCom();
+            }
+        });
+        cancelButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+            cancelBut();
+            }
+        });
+    }
+    public void pSuspend(){
+
+    }
+    public void tSuspend(){
+
+    }
+    public void disCom(){
+
+    }
+    public void cancelBut(){
 
     }
 

@@ -24,8 +24,6 @@ public class AdminLoggedInScreen extends AppCompatActivity {
                 complaintNav();
             }
         });
-
-
     }
 
     public void complaintNav() {
