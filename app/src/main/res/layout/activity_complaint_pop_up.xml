@@ -22,6 +22,16 @@
             android:fontFamily="sans-serif" />
 
         <TextView
+            android:id="@+id/dateComplainedAbout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignWithParentIfMissing="false"
+            android:layout_above="@id/complaintForCook"
+            android:layout_below="@id/nameOfCook"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="15sp" />
+
+        <TextView
             android:id="@+id/complaintForCook"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
