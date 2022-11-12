@@ -15,6 +15,7 @@ import com.google.firebase.database.ValueEventListener;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.provider.ContactsContract;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.AdapterView;
@@ -31,6 +32,7 @@ import java.util.List;
 public class ComplaintsReviewScreen extends AppCompatActivity {
 
     DatabaseReference reference;
+    DatabaseReference accountRef;
     ListView complaints;
     List<Complaint> complaintsList;
     ArrayAdapter arrayAdapter;
@@ -42,6 +44,7 @@ public class ComplaintsReviewScreen extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_complaints_review_screen);
         reference = FirebaseDatabase.getInstance().getReference("complaints");
+        accountRef = FirebaseDatabase.getInstance().getReference("accounts");
         complaints = findViewById(R.id.complaintsList);
         complaintsList = new ArrayList<>();
         onItemLongClick();
@@ -82,7 +85,20 @@ public class ComplaintsReviewScreen extends AppCompatActivity {
             @Override
             public boolean onItemLongClick(AdapterView<?> adapterView, View view, int i, long l) {
                 Complaint complaint = complaintsList.get(i);
-                showComplaintDashboardDialog(complaint.getCook(),complaint.getDate().toString());
+
+                accountRef.child(complaint.getCook()).addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        Cook userProfile = snapshot.getValue(Cook.class);
+                        showComplaintDashboardDialog(userProfile.getName(),complaint.getDate().toString());
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+
+                    }
+                });
+
                 return true;
             }
         });
@@ -144,8 +160,6 @@ public class ComplaintsReviewScreen extends AppCompatActivity {
     }
     public void disCom(){
 
-    }
-    public void cancelBut(){
     }
 
 

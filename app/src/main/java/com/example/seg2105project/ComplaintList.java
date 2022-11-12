@@ -6,10 +6,20 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
+
+import androidx.annotation.NonNull;
+
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
 import java.util.List;
 
 public class ComplaintList extends ArrayAdapter<Complaint> {
 
+    DatabaseReference accountRef = FirebaseDatabase.getInstance().getReference("accounts");
     private Activity context;
     List<Complaint> complaints;
 
@@ -27,7 +37,20 @@ public class ComplaintList extends ArrayAdapter<Complaint> {
         TextView dateComplaint = (TextView) listViewComplaint.findViewById(R.id.dateSubmittedComplaint);
 
         Complaint complaint = complaints.get(position);
-        cookName.setText("Cook: "+complaint.getCook());
+
+        accountRef.child(complaint.getCook()).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                Cook userProfile = snapshot.getValue(Cook.class);
+                cookName.setText("Cook: " + userProfile.getName());
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
         dateComplaint.setText("Date Submitted: "+complaint.getDate());
         return listViewComplaint;
     }
