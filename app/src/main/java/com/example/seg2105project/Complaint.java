@@ -5,19 +5,18 @@ import java.util.Date;
 public class Complaint {
     private Date date;
     private String summary;
-    private Client user;
-    private Cook cook;
+    private String user;
+    private String cook;
 
     public Complaint() {
 
     }
 
-    public Complaint(String sum, Client user, Cook cook) {
+    public Complaint(String sum, String userID, String cookID) {
         date = new Date();
-        this.setSummary(sum);
-        this.user = user;
-        this.setCook(cook);
-        this.setSummary(sum);
+        this.user = userID;
+        this.cook = cookID;
+        this.summary = sum;
     }
 
     /**
@@ -46,23 +45,23 @@ public class Complaint {
     /**
      * @return the information on the client who submitted the complaint is listed
      */
-    public Client getUser() {
+    public String getUser() {
         return user;
     }
 
     /**
      * @return the cook who the complaint was made against
      */
-    public Cook getCook() {
+    public String getCook() {
         return cook;
     }
 
     /**
      * Sets the complaint against a specific cook. it can be changed by an admin
      *
-     * @param cook
+     * @param cookID
      */
-    public void setCook(Cook cook) {
-        this.cook = cook;
+    public void setCook(String cookID) {
+        this.cook = cookID;
     }
 }

@@ -80,12 +80,6 @@
                 android:backgroundTint="#FF9800"
                 android:text="Dismiss Complaint" />
 
-            <Button
-                android:id="@+id/returnButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:backgroundTint="#FF9800"
-                android:text="Cancel" />
         </LinearLayout>
 
     </RelativeLayout>

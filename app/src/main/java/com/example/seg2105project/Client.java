@@ -51,7 +51,7 @@ public class Client extends Account {
         return cardInfo;
     }
 
-    public void createComplaint(Complaint c){ c.getCook().addComplaints(c);}
+    //public void createComplaint(Complaint c){ c.getCook().addComplaints(c);}
 
     public void addFavMeal(Meal meal) {
         favMeals.add(meal);

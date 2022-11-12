@@ -32,7 +32,16 @@
         <ListView
             android:id="@+id/complaintsList"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content">
+
+        </ListView>
+
+        <Button
+            android:id="@+id/insertDataComplaint"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="insert data"
+            android:translationY="500dp" />
 
     </LinearLayout>
 
