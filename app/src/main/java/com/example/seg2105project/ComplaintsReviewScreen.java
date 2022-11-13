@@ -170,7 +170,7 @@ public class ComplaintsReviewScreen extends AppCompatActivity {
     public void tSuspend(final String cookID){
         accountRef.child(cookID).child("suspension").setValue(true);
         Date currTime = new Date();
-        accountRef.child(cookID).child("suspensionTime").setValue(new Date(currTime.getTime() + 60000));
+        accountRef.child(cookID).child("suspensionTime").setValue(new Date(currTime.getTime() + 60000*5));
         Toast.makeText(ComplaintsReviewScreen.this, "Temporarily Suspended Cook" , Toast.LENGTH_LONG).show();
     }
     public void disCom(){
