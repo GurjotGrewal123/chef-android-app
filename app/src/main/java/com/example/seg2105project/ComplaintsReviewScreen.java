@@ -20,6 +20,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.provider.ContactsContract;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.AdapterView;
@@ -43,14 +44,14 @@ public class ComplaintsReviewScreen extends AppCompatActivity {
     ArrayAdapter arrayAdapter;
     DatabaseReference complaintDB;
     Button insertData;
-    //String key;
+    FirebaseAuth mAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_complaints_review_screen);
         reference = FirebaseDatabase.getInstance().getReference("complaints");
-
+        mAuth = FirebaseAuth.getInstance();
 
         System.out.println(reference.child("user"));
         accountRef = FirebaseDatabase.getInstance().getReference("accounts");
@@ -100,7 +101,7 @@ public class ComplaintsReviewScreen extends AppCompatActivity {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
                         Cook userProfile = snapshot.getValue(Cook.class);
-                        showComplaintDashboardDialog(userProfile.getName(),complaint.getDate().toString());
+                        showComplaintDashboardDialog(userProfile.getName(), complaint.getDate().toString(), complaint.getCook());
                     }
 
                     @Override
@@ -114,7 +115,7 @@ public class ComplaintsReviewScreen extends AppCompatActivity {
         });
     }
 
-    private void showComplaintDashboardDialog(final String cookname, final String date){
+    private void showComplaintDashboardDialog(final String cookname, final String date, final String cookID){
         AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(this);
         LayoutInflater inflater = getLayoutInflater();
         final View dialogView = inflater.inflate(R.layout.activity_complaint_pop_up,null);
@@ -138,8 +139,8 @@ public class ComplaintsReviewScreen extends AppCompatActivity {
         final Button temporarilySuspend = (Button) dialogView.findViewById(R.id.tempSuspend);
         final Button dismissComplaint = (Button) dialogView.findViewById(R.id.dissmissComplaint);
 
-        cookName.setText(cookname);
-        complaintText.setText(date);
+        cookName.setText("Cook's Name: " + cookname);
+        complaintText.setText("This was issued on: "+ date);
         final AlertDialog b = dialogBuilder.create();
         b.show();
         permenantlySuspend.setOnClickListener(new View.OnClickListener() {
@@ -152,7 +153,7 @@ public class ComplaintsReviewScreen extends AppCompatActivity {
         temporarilySuspend.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                        tSuspend();
+                        tSuspend(cookID);
                     }
         });
         dismissComplaint.setOnClickListener(new View.OnClickListener() {
@@ -163,19 +164,14 @@ public class ComplaintsReviewScreen extends AppCompatActivity {
         });
     }
     public void pSuspend(){
-        //accountRef.removeValue();
-        //FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-        //System.out.println(user);
-        //user.removeValue();
-        //Account.deleteAccount(key);
-      //jadbader7@gmail.com 123456  insertComplaint();
         Toast.makeText(ComplaintsReviewScreen.this, "Permanently Suspended Cook" , Toast.LENGTH_LONG).show();
 
     }
-    public void tSuspend(){
+    public void tSuspend(final String cookID){
+        accountRef.child(cookID).child("suspension").setValue(true);
+        Date currTime = new Date();
+        accountRef.child(cookID).child("suspensionTime").setValue(new Date(currTime.getTime() + 60000));
         Toast.makeText(ComplaintsReviewScreen.this, "Temporarily Suspended Cook" , Toast.LENGTH_LONG).show();
-
-
     }
     public void disCom(){
         Toast.makeText(ComplaintsReviewScreen.this, "Complaint Dismissed" , Toast.LENGTH_LONG).show();

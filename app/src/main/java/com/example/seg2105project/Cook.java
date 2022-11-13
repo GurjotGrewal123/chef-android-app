@@ -2,6 +2,7 @@ package com.example.seg2105project;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 
 public class Cook extends Account {
@@ -24,6 +25,8 @@ public class Cook extends Account {
      * access.
      */
     private boolean suspension;
+
+    private Date suspensionTime;
 
     /**
      *
@@ -84,6 +87,14 @@ public class Cook extends Account {
     public boolean isSuspension() {return (suspension = true);}
 
     public boolean endSuspension() {return (suspension = false);}
+
+    public void setSuspensionTime(Date time){
+        suspensionTime = time;
+    }
+
+    public Date getSuspensionTime(){
+        return suspensionTime;
+    }
 
     public HashMap<Meal, Integer> getRatings() {
         return ratings;

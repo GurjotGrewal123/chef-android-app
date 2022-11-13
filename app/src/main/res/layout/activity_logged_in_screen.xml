@@ -51,6 +51,14 @@
             android:textAlignment="center"
             android:textSize="20sp" />
 
+        <TextView
+            android:id="@+id/suspensionNotifier"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:textColor="#FF0000"
+            android:textSize="20sp" />
+
         <Button
             android:id="@+id/logOutButton"
             android:layout_width="wrap_content"

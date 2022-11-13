@@ -17,6 +17,8 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.Date;
+
 /**
  * this class if for the main log in screen. all users will see this screen and then be redirected according to their account type.
  *
@@ -27,6 +29,7 @@ public class LoggedInScreen extends AppCompatActivity {
     private DatabaseReference reference;
     private String userID;
     private Button logOutButton;
+    DatabaseReference susCheckRef;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,6 +44,19 @@ public class LoggedInScreen extends AppCompatActivity {
 
         final TextView userRole = findViewById(R.id.roleSpecifier);
 
+        susCheckRef = reference.child(userID).child("suspension");
+        susCheckRef.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                suspendUpdate((boolean)snapshot.getValue());
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
         logOutButton = findViewById(R.id.logOutButton);
         logOutButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -48,6 +64,8 @@ public class LoggedInScreen extends AppCompatActivity {
                 logOut();
             }
         });
+
+
 
         reference.child(userID).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -78,6 +96,43 @@ public class LoggedInScreen extends AppCompatActivity {
                     userRole.setText("Uh Oh! Something went wrong!");
                 }
 
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
+
+    }
+
+    public void suspendUpdate(boolean susCheck){
+        DatabaseReference susTimeRef = reference.child(userID).child("suspensionTime");
+        susTimeRef.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                Date susTime = snapshot.getValue(Date.class);
+                Date currTime = new Date();
+                if (susTime.getTime() < currTime.getTime()){
+                    susTimeRef.setValue(new Date(0));
+                    susCheckRef.setValue(false);
+                }
+
+                susCheckRef.addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        final TextView susNoti = findViewById(R.id.suspensionNotifier);
+                        if ((boolean)snapshot.getValue() == true) {
+                            susNoti.setText("You are suspended until: " + susTime);
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+
+                    }
+                });
             }
 
             @Override
