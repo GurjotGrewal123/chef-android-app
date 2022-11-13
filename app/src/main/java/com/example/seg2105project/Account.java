@@ -1,5 +1,8 @@
 package com.example.seg2105project;
 
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
 public abstract class Account {
     private String email;
     private String username;

@@ -33,6 +33,7 @@ public class LoggedInScreen extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_logged_in_screen);
 
+
         user = FirebaseAuth.getInstance().getCurrentUser();
         reference = FirebaseDatabase.getInstance().getReference("accounts");
         userID = user.getUid();

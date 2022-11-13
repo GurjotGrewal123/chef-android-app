@@ -2,8 +2,12 @@ package com.example.seg2105project;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+//import { getAuth, deleteUser } from "firebase/auth";
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
@@ -23,6 +27,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -38,12 +43,16 @@ public class ComplaintsReviewScreen extends AppCompatActivity {
     ArrayAdapter arrayAdapter;
     DatabaseReference complaintDB;
     Button insertData;
+    //String key;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_complaints_review_screen);
         reference = FirebaseDatabase.getInstance().getReference("complaints");
+
+
+        System.out.println(reference.child("user"));
         accountRef = FirebaseDatabase.getInstance().getReference("accounts");
         complaints = findViewById(R.id.complaintsList);
         complaintsList = new ArrayList<>();
@@ -66,6 +75,7 @@ public class ComplaintsReviewScreen extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 complaintsList.clear();
                 for(DataSnapshot postSnapshot: dataSnapshot.getChildren()){
+                    //key = postSnapshot.getKey();
                     Complaint complaint = postSnapshot.getValue(Complaint.class);
                     complaintsList.add(complaint);
                 }
@@ -153,19 +163,29 @@ public class ComplaintsReviewScreen extends AppCompatActivity {
         });
     }
     public void pSuspend(){
+        //accountRef.removeValue();
+        //FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        //System.out.println(user);
+        //user.removeValue();
+        //Account.deleteAccount(key);
+      //jadbader7@gmail.com 123456  insertComplaint();
+        Toast.makeText(ComplaintsReviewScreen.this, "Permanently Suspended Cook" , Toast.LENGTH_LONG).show();
 
     }
     public void tSuspend(){
+        Toast.makeText(ComplaintsReviewScreen.this, "Temporarily Suspended Cook" , Toast.LENGTH_LONG).show();
+
 
     }
     public void disCom(){
+        Toast.makeText(ComplaintsReviewScreen.this, "Complaint Dismissed" , Toast.LENGTH_LONG).show();
 
     }
 
 
     public void insertComplaint(){
-        String summary = "This is the first complaint";
-        String userID = "1FRyh9AxIWQgZACNrwKHSraga962";
+        String summary = "This isc  the first complaint";
+        String userID = "MN3GZyMUG7Rmz3k9oJ5e5nYgGd13";
         String cookID = "N1J77V5xAKeDOe5DVLETk6GUa8p2";
 
         Complaint complaint = new Complaint(summary, userID, cookID);
