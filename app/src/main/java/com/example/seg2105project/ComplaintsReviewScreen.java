@@ -101,7 +101,7 @@ public class ComplaintsReviewScreen extends AppCompatActivity {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
                         Cook userProfile = snapshot.getValue(Cook.class);
-                        showComplaintDashboardDialog(userProfile.getName(), complaint.getDate().toString(), complaint.getCook());
+                        showComplaintDashboardDialog(userProfile.getName(), complaint.getDate().toString(), complaint.getCook(), complaint.getId());
                     }
 
                     @Override
@@ -115,7 +115,7 @@ public class ComplaintsReviewScreen extends AppCompatActivity {
         });
     }
 
-    private void showComplaintDashboardDialog(final String cookname, final String date, final String cookID){
+    private void showComplaintDashboardDialog(final String cookname, final String date, final String cookID, final String complaintID){
         AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(this);
         LayoutInflater inflater = getLayoutInflater();
         final View dialogView = inflater.inflate(R.layout.activity_complaint_pop_up,null);
@@ -159,7 +159,7 @@ public class ComplaintsReviewScreen extends AppCompatActivity {
         dismissComplaint.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                disCom();
+                disCom(complaintID);
             }
         });
     }
@@ -173,7 +173,8 @@ public class ComplaintsReviewScreen extends AppCompatActivity {
         accountRef.child(cookID).child("suspensionTime").setValue(new Date(currTime.getTime() + 60000*5));
         Toast.makeText(ComplaintsReviewScreen.this, "Temporarily Suspended Cook" , Toast.LENGTH_LONG).show();
     }
-    public void disCom(){
+    public void disCom(final String complaintID){
+        reference.child(complaintID).removeValue();
         Toast.makeText(ComplaintsReviewScreen.this, "Complaint Dismissed" , Toast.LENGTH_LONG).show();
 
     }
@@ -181,8 +182,8 @@ public class ComplaintsReviewScreen extends AppCompatActivity {
 
     public void insertComplaint(){
         String summary = "This isc  the first complaint";
-        String userID = "MN3GZyMUG7Rmz3k9oJ5e5nYgGd13";
-        String cookID = "N1J77V5xAKeDOe5DVLETk6GUa8p2";
+        String userID = "irtjttovr0c2JgXd9oHI8Pwrfk72";
+        String cookID = "MN3GZyMUG7Rmz3k9oJ5e5nYgGd13";
         String id = reference.push().getKey();
 
         Complaint complaint = new Complaint(summary, userID, cookID, id);
