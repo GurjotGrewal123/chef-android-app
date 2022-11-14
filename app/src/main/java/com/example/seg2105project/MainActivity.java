@@ -96,6 +96,12 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    public void launchAdmin(){
+        Intent intent = new Intent(this, AdminLoggedInScreen.class);
+        startActivity(intent);
+    }
+
+
     public void loginUser(){
         String emailLog = email.getText().toString();
         String password = pass.getText().toString();
@@ -119,8 +125,24 @@ public class MainActivity extends AppCompatActivity {
         mAuth.signInWithEmailAndPassword(emailLog, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
-                if(task.isSuccessful()){
-                    loginNavigate();
+                if(task.isSuccessful()) {
+                    String userID = mAuth.getUid();
+                    FirebaseDatabase.getInstance().getReference("accounts").child(userID).child("type").addListenerForSingleValueEvent(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot snapshot) {
+                            String currUser = (String) snapshot.getValue();
+                            if(currUser.equals("ADMIN")){
+                                launchAdmin();
+                            }else{
+                                loginNavigate();
+                            }
+                        }
+
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError error) {
+
+                        }
+                    });
                 }
                 else{
                     Toast.makeText(MainActivity.this, "Wrong credentials. Input correct login info.", Toast.LENGTH_SHORT).show();
@@ -128,5 +150,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
+
 
 }

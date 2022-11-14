@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -31,6 +32,7 @@ public class LoggedInScreen extends AppCompatActivity {
     private Button logOutButton;
     DatabaseReference susCheckRef;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,21 +43,21 @@ public class LoggedInScreen extends AppCompatActivity {
         reference = FirebaseDatabase.getInstance().getReference("accounts");
         userID = user.getUid();
 
-
         final TextView userRole = findViewById(R.id.roleSpecifier);
 
-        susCheckRef = reference.child(userID).child("suspension");
-        susCheckRef.addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                suspendUpdate((boolean)snapshot.getValue());
-            }
 
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
+            susCheckRef = reference.child(userID).child("suspension");
+            susCheckRef.addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot snapshot) {
+                    suspendUpdate((boolean) snapshot.getValue());
+                }
 
-            }
-        });
+                @Override
+                public void onCancelled(@NonNull DatabaseError error) {
+
+                }
+            });
 
         logOutButton = findViewById(R.id.logOutButton);
         logOutButton.setOnClickListener(new View.OnClickListener() {
@@ -88,9 +90,6 @@ public class LoggedInScreen extends AppCompatActivity {
                     else if (userProfile.getType() == AccountType.COOK){
                         userRole.setText("You are signed in as a cook");
                     }
-                    else if (userProfile.getType() == AccountType.ADMIN){
-                        launchAdmin();
-                    }
                 }
                 else{
                     userRole.setText("Uh Oh! Something went wrong!");
@@ -114,9 +113,11 @@ public class LoggedInScreen extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 Date susTime = snapshot.getValue(Date.class);
                 Date currTime = new Date();
-                if (susTime.getTime() < currTime.getTime()){
-                    susTimeRef.setValue(new Date(0));
-                    susCheckRef.setValue(false);
+                if (susTime != null) {
+                    if (susTime.getTime() < currTime.getTime()) {
+                        susTimeRef.setValue(new Date(0));
+                        susCheckRef.setValue(false);
+                    }
                 }
 
                 susCheckRef.addValueEventListener(new ValueEventListener() {
@@ -147,9 +148,5 @@ public class LoggedInScreen extends AppCompatActivity {
         startActivity(intent);
     }
 
-    public void launchAdmin(){
-        Intent intent = new Intent(this, AdminLoggedInScreen.class);
-        startActivity(intent);
-    }
 
 }

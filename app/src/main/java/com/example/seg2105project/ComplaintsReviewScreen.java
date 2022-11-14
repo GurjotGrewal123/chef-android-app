@@ -183,9 +183,10 @@ public class ComplaintsReviewScreen extends AppCompatActivity {
         String summary = "This isc  the first complaint";
         String userID = "MN3GZyMUG7Rmz3k9oJ5e5nYgGd13";
         String cookID = "N1J77V5xAKeDOe5DVLETk6GUa8p2";
+        String id = reference.push().getKey();
 
-        Complaint complaint = new Complaint(summary, userID, cookID);
-        reference.push().setValue(complaint);
+        Complaint complaint = new Complaint(summary, userID, cookID, id);
+        reference.child(id).setValue(complaint);
     }
 
 }

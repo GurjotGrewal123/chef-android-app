@@ -7,16 +7,18 @@ public class Complaint {
     private String summary;
     private String user;
     private String cook;
+    private String id;
 
     public Complaint() {
 
     }
 
-    public Complaint(String sum, String userID, String cookID) {
+    public Complaint(String sum, String userID, String cookID, String id) {
         date = new Date();
         this.user = userID;
         this.cook = cookID;
         this.summary = sum;
+        this.id = id;
     }
 
     /**
@@ -63,5 +65,13 @@ public class Complaint {
      */
     public void setCook(String cookID) {
         this.cook = cookID;
+    }
+
+    public void setId(String id){
+        this.id = id;
+    }
+
+    public String getId(){
+        return id;
     }
 }
