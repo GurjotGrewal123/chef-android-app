@@ -86,9 +86,12 @@ public class LoggedInScreen extends AppCompatActivity {
                 if (userProfile != null) {
                     if (userProfile.getType() == AccountType.CLIENT){
                         userRole.setText("You are signed in as a client");
+//                        Intent intent = new Intent(this, .class);
+//                        startActivity(intent);
                     }
                     else if (userProfile.getType() == AccountType.COOK){
-                        userRole.setText("You are signed in as a cook");
+                        //userRole.setText("You are signed in as a cook");
+                        logInCook();
                     }
                 }
                 else{
@@ -104,6 +107,10 @@ public class LoggedInScreen extends AppCompatActivity {
         });
 
 
+    }
+    public void logInCook(){
+        Intent intent = new Intent(this, CookLoggedInScreen.class);
+        startActivity(intent);
     }
 
     public void suspendUpdate(boolean susCheck){
