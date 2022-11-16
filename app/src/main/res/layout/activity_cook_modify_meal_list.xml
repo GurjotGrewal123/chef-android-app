@@ -19,7 +19,7 @@
             android:background="#FF9800" />
 
         <TextView
-            android:id="@+id/cookModifyMealListGreet"
+            android:id="@+id/cookAddMealListGreet"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fontFamily="@font/alata"
@@ -40,7 +40,7 @@
         </ScrollView>
 
         <Button
-            android:id="@+id/addMealListItem"
+            android:id="@+id/cancelAddMenuList"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"

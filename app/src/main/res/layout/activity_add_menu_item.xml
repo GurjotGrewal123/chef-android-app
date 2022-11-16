@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".AddMenuItem">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <View
+            android:id="@+id/view2"
+            android:layout_width="match_parent"
+            android:layout_height="50sp"
+            android:layout_marginBottom="15sp"
+            android:background="#FF9800" />
+
+        <TextView
+            android:id="@+id/addMenuWelcomeMessage"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10sp"
+            android:gravity="center_horizontal"
+            android:text="Add Meal Details Below"
+            android:textSize="24sp" />
+
+        <EditText
+            android:id="@+id/enterMealName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10sp"
+            android:layout_marginRight="10sp"
+            android:layout_marginBottom="10sp"
+            android:ems="10"
+            android:hint="Enter Meal Name"
+            android:inputType="textPersonName" />
+
+        <EditText
+            android:id="@+id/enterMealType"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10sp"
+            android:layout_marginRight="10sp"
+            android:layout_marginBottom="10sp"
+            android:ems="10"
+            android:hint="Enter Meal Type"
+            android:inputType="textPersonName" />
+
+        <EditText
+            android:id="@+id/enterIngredients"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10sp"
+            android:layout_marginRight="10sp"
+            android:layout_marginBottom="10sp"
+            android:ems="10"
+            android:hint="Enter Ingredients"
+            android:inputType="textPersonName" />
+
+        <EditText
+            android:id="@+id/enterAllergens"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10sp"
+            android:layout_marginRight="10sp"
+            android:layout_marginBottom="10sp"
+            android:ems="10"
+            android:hint="Enter Allergens"
+            android:inputType="textPersonName" />
+
+        <EditText
+            android:id="@+id/enterPrice"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10sp"
+            android:layout_marginRight="10sp"
+            android:layout_marginBottom="10sp"
+            android:ems="10"
+            android:hint="Enter Price"
+            android:inputType="textPersonName" />
+
+        <EditText
+            android:id="@+id/enterItemDescription"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10sp"
+            android:layout_marginRight="10sp"
+            android:layout_marginBottom="10sp"
+            android:gravity="start|top"
+            android:hint="Enter Item Description"
+            android:inputType="textMultiLine"
+            android:maxLines="3"
+            android:minLines="1" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/addItemMenu"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="5sp"
+                android:backgroundTint="#FF9800"
+                android:text="Add Item" />
+
+            <Button
+                android:id="@+id/cancelMenuButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5sp"
+                android:backgroundTint="#FF9800"
+                android:text="Cancel" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
