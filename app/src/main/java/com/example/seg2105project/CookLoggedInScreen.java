@@ -10,6 +10,8 @@ import android.widget.Button;
 public class CookLoggedInScreen extends AppCompatActivity {
 
     private Button logOutButton;
+    private Button modifyMenu;
+    private Button modifyMealList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,9 +25,33 @@ public class CookLoggedInScreen extends AppCompatActivity {
                 logOut();
             }
         });
+
+        modifyMenu = findViewById(R.id.cookModifyMenu);
+        modifyMenu.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                openModifyMenu();
+            }
+        });
+        modifyMealList = findViewById(R.id.cookModifyMealList);
+        modifyMealList.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                openMealList();
+            }
+        });
+
     }
     public void logOut(){
         Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
+    }
+    public void openModifyMenu(){
+        Intent intent = new Intent(this, CookModifyMenu.class);
+        startActivity(intent);
+    }
+    public void openMealList(){
+        Intent intent = new Intent(this, CookModifyMealList.class);
         startActivity(intent);
     }
 }
