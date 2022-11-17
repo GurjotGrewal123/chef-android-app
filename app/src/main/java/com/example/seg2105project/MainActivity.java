@@ -91,8 +91,13 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    public void loginNavigate(){
+    public void loginClient(){
         Intent intent = new Intent(this, LoggedInScreen.class);
+        startActivity(intent);
+    }
+
+    public void loginCook(){
+        Intent intent = new Intent(this, CookLoggedInScreen.class);
         startActivity(intent);
     }
 
@@ -133,8 +138,10 @@ public class MainActivity extends AppCompatActivity {
                             String currUser = (String) snapshot.getValue();
                             if(currUser.equals("ADMIN")){
                                 launchAdmin();
+                            }else if (currUser.equals("COOK")){
+                                loginCook();
                             }else{
-                                loginNavigate();
+                                loginClient();
                             }
                         }
 

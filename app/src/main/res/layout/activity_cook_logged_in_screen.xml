@@ -25,10 +25,25 @@
             android:layout_marginLeft="10sp"
             android:layout_marginRight="10sp"
             android:layout_marginBottom="10sp"
-            android:fontFamily="@font/alata"
+            android:fontFamily="sans-serif"
             android:gravity="center_horizontal"
             android:text="@string/welcome_placeholder_what_would_you_like_to_do_today"
             android:textSize="24sp" />
+
+        <TextView
+            android:id="@+id/roleCookSpec"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/cookSuspensionNoti"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:textColor="#E40000"
+            android:textSize="18sp" />
 
         <ImageView
             android:id="@+id/placeHolderImage3"

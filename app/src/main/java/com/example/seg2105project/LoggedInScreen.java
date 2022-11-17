@@ -30,7 +30,6 @@ public class LoggedInScreen extends AppCompatActivity {
     private DatabaseReference reference;
     private String userID;
     private Button logOutButton;
-    DatabaseReference susCheckRef;
 
 
     @Override
@@ -46,18 +45,6 @@ public class LoggedInScreen extends AppCompatActivity {
         final TextView userRole = findViewById(R.id.roleSpecifier);
 
 
-            susCheckRef = reference.child(userID).child("suspension");
-            susCheckRef.addListenerForSingleValueEvent(new ValueEventListener() {
-                @Override
-                public void onDataChange(@NonNull DataSnapshot snapshot) {
-                    suspendUpdate((boolean) snapshot.getValue());
-                }
-
-                @Override
-                public void onCancelled(@NonNull DatabaseError error) {
-
-                }
-            });
 
         logOutButton = findViewById(R.id.logOutButton);
         logOutButton.setOnClickListener(new View.OnClickListener() {
@@ -87,8 +74,8 @@ public class LoggedInScreen extends AppCompatActivity {
                     if (userProfile.getType() == AccountType.CLIENT){
                         userRole.setText("You are signed in as a client");
                     }
-                    else if (userProfile.getType() == AccountType.COOK){
-                        userRole.setText("You are signed in as a cook");
+                    else{
+                        userRole.setText("Uh Oh! Something went wrong!");
                     }
                 }
                 else{
@@ -106,42 +93,6 @@ public class LoggedInScreen extends AppCompatActivity {
 
     }
 
-    public void suspendUpdate(boolean susCheck){
-        DatabaseReference susTimeRef = reference.child(userID).child("suspensionTime");
-        susTimeRef.addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                Date susTime = snapshot.getValue(Date.class);
-                Date currTime = new Date();
-                if (susTime != null) {
-                    if (susTime.getTime() < currTime.getTime()) {
-                        susTimeRef.setValue(new Date(0));
-                        susCheckRef.setValue(false);
-                    }
-                }
-
-                susCheckRef.addValueEventListener(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(@NonNull DataSnapshot snapshot) {
-                        final TextView susNoti = findViewById(R.id.suspensionNotifier);
-                        if ((boolean)snapshot.getValue() == true) {
-                            susNoti.setText("You are suspended until: " + susTime);
-                        }
-                    }
-
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError error) {
-
-                    }
-                });
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-        });
-    }
 
     public void logOut(){
         Intent intent = new Intent(this, MainActivity.class);

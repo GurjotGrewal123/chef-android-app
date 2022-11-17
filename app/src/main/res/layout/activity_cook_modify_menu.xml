@@ -22,7 +22,7 @@
             android:id="@+id/cookAddMealListGreet"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/alata"
+            android:fontFamily="sans-serif"
             android:gravity="center_horizontal"
             android:text="What would you like to do with your menu?"
             android:textSize="20sp" />
@@ -40,12 +40,21 @@
         </ScrollView>
 
         <Button
-            android:id="@+id/cancelAddMenuList"
+            android:id="@+id/addMealtoMenu"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:backgroundTint="#FF9800"
             android:text="Add Item"
+            android:translationY="450dp" />
+
+        <Button
+            android:id="@+id/MenuHomeBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:backgroundTint="#FF9800"
+            android:text="Home"
             android:translationY="450dp" />
 
     </LinearLayout>
