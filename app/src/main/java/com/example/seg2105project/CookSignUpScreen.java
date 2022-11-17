@@ -157,6 +157,11 @@ public class CookSignUpScreen extends AppCompatActivity {
                                     }
                                 }
                             });
+
+                    FirebaseDatabase.getInstance().getReference("accounts")
+                            .child(FirebaseAuth.getInstance().getCurrentUser().getUid())
+                            .child("suspension")
+                            .setValue(false);
                 }
             }
         });

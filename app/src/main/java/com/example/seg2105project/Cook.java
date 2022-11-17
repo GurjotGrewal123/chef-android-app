@@ -40,6 +40,7 @@ public class Cook extends Account {
     public Cook(String email, String username, String password, String name, Address address) {
         super(email, username, password, name, address, AccountType.COOK);
         this.suspension = false;
+        this.menu = new ArrayList<>();
     }
 
     public Cook(){

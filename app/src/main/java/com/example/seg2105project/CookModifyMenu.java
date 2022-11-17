@@ -154,7 +154,19 @@ public class CookModifyMenu extends AppCompatActivity {
 
         Meal newMeal = new Meal(mealName.getText().toString(), mealIngredients.getText().toString(), mealAllergens.getText().toString(), mealDesc.getText().toString(), Double.parseDouble(mealPrice.getText().toString()), mealType.getText().toString(), mAuth.getUid());
 
-        accountRef.child(mAuth.getUid()).child("menu").push().setValue(newMeal);
+        //accountRef.child(mAuth.getUid()).child("menu").push().setValue(newMeal);
+        accountRef.child(mAuth.getUid()).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                Cook userProfile = snapshot.getValue(Cook.class);
+                userProfile.addMeal(newMeal);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
 
         Toast.makeText(CookModifyMenu.this, "Item has been added" , Toast.LENGTH_LONG).show();
 
