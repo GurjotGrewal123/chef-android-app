@@ -73,6 +73,8 @@ public class LoggedInScreen extends AppCompatActivity {
                 if (userProfile != null) {
                     if (userProfile.getType() == AccountType.CLIENT){
                         userRole.setText("You are signed in as a client");
+//                        Intent intent = new Intent(this, .class);
+//                        startActivity(intent);
                     }
                     else{
                         userRole.setText("Uh Oh! Something went wrong!");
@@ -92,6 +94,7 @@ public class LoggedInScreen extends AppCompatActivity {
 
 
     }
+
 
 
     public void logOut(){
