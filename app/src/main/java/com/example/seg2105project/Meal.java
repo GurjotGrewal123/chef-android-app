@@ -4,12 +4,13 @@ import java.util.ArrayList;
 
 public class Meal {
 
-    private ArrayList<CuisineTypes> types;
+    private String types;
     private String name;
     private double price;
-    private ArrayList<String> ingredients;
-    private ArrayList<String> allergens;
+    private String ingredients;
+    private String allergens;
     private String description;
+    private String cookAssignedID;
 
 
     /**
@@ -22,14 +23,15 @@ public class Meal {
      * Precondition: types is a parameter that is found in CuisineTypes
      *
      */
-    public Meal(String name, ArrayList<String> ingredients, ArrayList<String> allergens,
-                String description, double price, ArrayList<CuisineTypes> types) {
+    public Meal(String name, String ingredients, String allergens,
+                String description, double price, String types, String cookAssignedID) {
         this.name = name;
         this.ingredients = ingredients;
         this.allergens = allergens;
         this.description = description;
         this.price = price;
         this.types = types;
+        this.cookAssignedID = cookAssignedID;
     }
     /**
      * empty constructor, items can be added later
@@ -56,7 +58,7 @@ public class Meal {
      * prices may be updated and this method will allow for the price to be updated
      * @param price
      */
-    public void changePrice(double price) {
+    public void setPrice(double price) {
         this.price = price;
     }
     /**
@@ -67,49 +69,24 @@ public class Meal {
         return price;
     }
     /**
-     * adds a single ingredient to the list of ingredients
-     * @param ing
-     * @return
-     */
-    public boolean addIngredient(String ing){
-        return ingredients.add(ing);
-    }
-    /**
-     * deletes a single ingredient
-     * @param ing
-     * @return true if the ingredient is deleted and false if not found
-     * it is not necessary to delete the entire list at once as with 0 ingredients there is no
-     * meal.
-     */
-    public boolean deleteIngredient(String ing){
-        return ingredients.remove(ing);
-    }
-    /**
-     * will update the entire list of ingredients with a new list of ingredients
-     * @param theList
-     */
-    public void addIngredientList(ArrayList<String> theList){
-        this.ingredients = theList;
-    }
-    /**
      *
      * @return gets the list of cuisineTypes associated with a specific meal
      */
-    public ArrayList<CuisineTypes> getTypes() {
+    public String getTypes() {
         return types;
     }
     /**
      *
      * @return the complete list of ingredients
      */
-    public ArrayList<String> getIngredients() {
+    public String getIngredients() {
         return ingredients;
     }
     /**
      *
      * @return the list of allergens associated with a meal
      */
-    public ArrayList<String> getAllergens(){
+    public String getAllergens(){
         return allergens;
     }
     /**
@@ -117,23 +94,11 @@ public class Meal {
      * @param aller
      * @return
      */
-    public boolean addAllergen(String aller){
-        return allergens.add(aller);
+    public void setAllergens(String aller){
+        this.allergens = aller;
     }
-    /**
-     *removes an allergen from a meal, it is assumed that a new ingredient could
-     * be used so that a meal is allergen free
-     * @param aller
-     * @return
-     */
-    public boolean removeAllergen(String aller){
-        return allergens.remove(aller);
-    }
-    /**
-     * overides the current description of a meal with a new one
-     * @param theText
-     */
-    public void updateDescription(String theText){
+
+    public void setDescription(String theText){
         this.description = theText;
     }
     /**
@@ -145,18 +110,18 @@ public class Meal {
     }
     /**
      * adds an additional type to the list of cuisines
-     * @param type
+     * @param types
      */
-    public boolean addType(CuisineTypes type) {
-        return types.add(type);
+    public void setTypes(String types) {
+         this.types = types;
     }
-    /**
-     * removes a specific type
-     * @param type
-     * @return
-     */
-    public boolean removeType(CuisineTypes type){
-        return types.remove(type);
+
+    public String getCookAssignedID(){
+        return this.cookAssignedID;
+    }
+
+    public void setCookAssignedID(String cookAssignedID){
+        this.cookAssignedID = cookAssignedID;
     }
 
 }

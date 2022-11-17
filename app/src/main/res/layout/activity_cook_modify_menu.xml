@@ -24,20 +24,17 @@
             android:layout_height="wrap_content"
             android:fontFamily="sans-serif"
             android:gravity="center_horizontal"
+            android:paddingVertical="2dp"
             android:text="What would you like to do with your menu?"
             android:textSize="20sp" />
 
-        <ScrollView
+        <ListView
+            android:id="@+id/menuMeals"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10sp">
+            android:paddingTop="5dp">
 
-            <ListView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-            </ListView>
-        </ScrollView>
+        </ListView>
 
         <Button
             android:id="@+id/addMealtoMenu"

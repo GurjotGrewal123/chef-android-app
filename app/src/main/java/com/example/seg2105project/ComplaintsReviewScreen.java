@@ -50,11 +50,11 @@ public class ComplaintsReviewScreen extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_complaints_review_screen);
+
         reference = FirebaseDatabase.getInstance().getReference("complaints");
         mAuth = FirebaseAuth.getInstance();
-
-        System.out.println(reference.child("user"));
         accountRef = FirebaseDatabase.getInstance().getReference("accounts");
+
         complaints = findViewById(R.id.complaintsList);
         complaintsList = new ArrayList<>();
         onItemLongClick();
@@ -76,7 +76,7 @@ public class ComplaintsReviewScreen extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 complaintsList.clear();
                 for(DataSnapshot postSnapshot: dataSnapshot.getChildren()){
-                    //key = postSnapshot.getKey();
+
                     Complaint complaint = postSnapshot.getValue(Complaint.class);
                     complaintsList.add(complaint);
                 }
