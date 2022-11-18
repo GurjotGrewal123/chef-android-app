@@ -11,6 +11,7 @@ public class Meal {
     private String allergens;
     private String description;
     private String cookAssignedID;
+    private String id;
 
 
     /**
@@ -24,7 +25,7 @@ public class Meal {
      *
      */
     public Meal(String name, String ingredients, String allergens,
-                String description, double price, String types, String cookAssignedID) {
+                String description, double price, String types, String cookAssignedID, String id) {
         this.name = name;
         this.ingredients = ingredients;
         this.allergens = allergens;
@@ -32,6 +33,7 @@ public class Meal {
         this.price = price;
         this.types = types;
         this.cookAssignedID = cookAssignedID;
+        this.id = id;
     }
     /**
      * empty constructor, items can be added later
@@ -122,6 +124,14 @@ public class Meal {
 
     public void setCookAssignedID(String cookAssignedID){
         this.cookAssignedID = cookAssignedID;
+    }
+
+    public String getId(){
+        return this.id;
+    }
+
+    public void setId(String id){
+        this.id = id;
     }
 
 }

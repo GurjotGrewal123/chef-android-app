@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -39,6 +40,7 @@ public class CookLoggedInScreen extends AppCompatActivity {
         userID = user.getUid();
 
         final TextView userRole = findViewById(R.id.roleCookSpec);
+        userRole.setText("You are signed in as a cook");
 
 
         susCheckRef = reference.child(userID).child("suspension");
@@ -63,46 +65,27 @@ public class CookLoggedInScreen extends AppCompatActivity {
         });
 
 
-
-        reference.child(userID).addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot){
-                Account userProfile = null;
-                if (snapshot.getValue(Client.class) != null) {
-                    userProfile = snapshot.getValue(Client.class);
-                }
-                else if (snapshot.getValue(Cook.class) != null) {
-                    userProfile = snapshot.getValue(Cook.class);
-                }
-                else if (snapshot.getValue(Administrator.class) != null){
-                    userProfile = snapshot.getValue(Administrator.class);
-                }
-
-                if (userProfile != null) {
-                    if (userProfile.getType() == AccountType.COOK){
-                        userRole.setText("You are signed in as a cook");
-                    }
-                    else{
-                        userRole.setText("Uh Oh! Something went wrong!");
-                    }
-                }
-                else{
-                    userRole.setText("Uh Oh! Something went wrong!");
-                }
-
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-        });
-
         MenuScreenButton = findViewById(R.id.cookModifyMenu);
         MenuScreenButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                launchMenu();
+                susCheckRef.addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        if ((boolean)snapshot.getValue() == true) {
+                            Toast.makeText(CookLoggedInScreen.this, "Sorry, you're restricted from doing this because you're suspended!" , Toast.LENGTH_LONG).show();
+                        }
+                        else{
+                            launchMenu();
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+
+                    }
+                });
+
             }
         });
 
@@ -110,7 +93,23 @@ public class CookLoggedInScreen extends AppCompatActivity {
         MealListScreenButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                launchMealList();
+
+                susCheckRef.addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        if ((boolean)snapshot.getValue() == true) {
+                            Toast.makeText(CookLoggedInScreen.this, "Sorry, you're restricted from doing this because you're suspended!" , Toast.LENGTH_LONG).show();
+                        }
+                        else{
+                            launchMealList();
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+
+                    }
+                });
             }
         });
 

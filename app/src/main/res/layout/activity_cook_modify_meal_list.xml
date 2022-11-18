@@ -27,17 +27,12 @@
             android:text="What would you like to do with your meal list?"
             android:textSize="20sp" />
 
-        <ScrollView
+        <ListView
+            android:id="@+id/offeredMeals"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10sp">
+            android:layout_height="wrap_content">
 
-            <ListView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-            </ListView>
-        </ScrollView>
+        </ListView>
 
         <Button
             android:id="@+id/MealListHomeBtn"
