@@ -118,18 +118,11 @@ public class CookModifyMenu extends AppCompatActivity {
         final View dialogView = inflater.inflate(R.layout.remove_menu_item_dialog,null);
         dialogBuilder.setView(dialogView);
 
-        dialogBuilder
-                .setCancelable(false)
-                .setNegativeButton("Cancel",new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog,int id) {
-                        // if this button is clicked, just close
-                        // the dialog box and do nothing
-                        dialog.cancel();
-                    }
-                });
+
 
         final Button addMealToList = dialogView.findViewById(R.id.addMealtoOfferedList);
         final Button removeMeal = dialogView.findViewById(R.id.removeMealFromMenu);
+        final Button cancelDialog = dialogView.findViewById(R.id.cancelMenuDialog);
         final TextView mealName = dialogView.findViewById(R.id.mealInMenuName);
         final TextView mealPrice = dialogView.findViewById(R.id.mealInMenuPrice);
         final TextView mealType = dialogView.findViewById(R.id.mealInMenuType);
@@ -159,6 +152,13 @@ public class CookModifyMenu extends AppCompatActivity {
             }
         });
 
+        cancelDialog.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                b.dismiss();
+            }
+        });
+
     }
 
     private void addMealToList(Meal meal){
@@ -168,8 +168,25 @@ public class CookModifyMenu extends AppCompatActivity {
     }
 
     private void removeMealFromMenu(Meal meal){
-        accountRef.child(mAuth.getUid()).child("menu").child(meal.getId()).removeValue();
-        Toast.makeText(CookModifyMenu.this, "Meal has been removed" , Toast.LENGTH_LONG).show();
+
+        accountRef.child(mAuth.getUid()).child("offeredMeals").child(meal.getId()).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                if (snapshot.exists()){
+                    Toast.makeText(CookModifyMenu.this, "This meal is in your offered meals. You cannot remove it." , Toast.LENGTH_LONG).show();
+                }
+                else{
+                    accountRef.child(mAuth.getUid()).child("menu").child(meal.getId()).removeValue();
+                    Toast.makeText(CookModifyMenu.this, "Meal has been removed" , Toast.LENGTH_LONG).show();
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
 
     }
 
@@ -179,15 +196,8 @@ public class CookModifyMenu extends AppCompatActivity {
         final View dialogView = inflater.inflate(R.layout.activity_add_menu_item,null);
         addMealDialog.setView(dialogView);
 
-        addMealDialog
-                .setCancelable(false)
-                .setNegativeButton("Cancel",new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog,int id) {
-                        dialog.cancel();
-                    }
-                });
-
         final Button addMealToMenuBtn = (Button) dialogView.findViewById(R.id.addItemMenu);
+        final Button cancelAddMealMenuBtn = (Button) dialogView.findViewById(R.id.cancelAddMenuItem);
 
         final AlertDialog b = addMealDialog.create();
         b.show();
@@ -199,6 +209,12 @@ public class CookModifyMenu extends AppCompatActivity {
             }
         });
 
+        cancelAddMealMenuBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                b.dismiss();
+            }
+        });
     }
 
     private void addItemToMenu(View dialogView){

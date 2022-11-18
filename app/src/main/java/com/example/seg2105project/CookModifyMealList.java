@@ -108,15 +108,6 @@ public class CookModifyMealList extends AppCompatActivity {
         final View dialogView = inflater.inflate(R.layout.remove_meal_list_item_dialog, null);
         dialogBuilder.setView(dialogView);
 
-        dialogBuilder
-                .setCancelable(false)
-                .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int id) {
-                        // if this button is clicked, just close
-                        // the dialog box and do nothing
-                        dialog.cancel();
-                    }
-                });
 
         final Button noButton = dialogView.findViewById(R.id.removeMealFromMenu);
         final Button yesButton = dialogView.findViewById(R.id.addMealtoOfferedList);
@@ -133,7 +124,7 @@ public class CookModifyMealList extends AppCompatActivity {
         yesButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                removeItemFromList();
+                removeItemFromList(meal);
 
             }
         });
@@ -147,7 +138,7 @@ public class CookModifyMealList extends AppCompatActivity {
         Intent intent = new Intent(this, CookModifyMealList.class);
         startActivity(intent);
     }
-    public void removeItemFromList(){
-        //to be implemented
+    public void removeItemFromList(Meal meal){
+        accountRef.child(mAuth.getUid()).child("offeredMeals").child(meal.getId()).removeValue();
     }
 }
