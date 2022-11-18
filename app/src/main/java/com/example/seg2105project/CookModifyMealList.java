@@ -89,7 +89,7 @@ public class CookModifyMealList extends AppCompatActivity {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
                         Cook userProfile = snapshot.getValue(Cook.class);
-                        showModifyCurrentMealDialog(meal);
+                        showModifyCurrentMealListDialog(meal);
                     }
 
                     @Override
@@ -102,7 +102,7 @@ public class CookModifyMealList extends AppCompatActivity {
             }
         });
     }
-    private void showModifyCurrentMealDialog(Meal meal) {
+    private void showModifyCurrentMealListDialog(Meal meal) {
         AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(this);
         LayoutInflater inflater = getLayoutInflater();
         final View dialogView = inflater.inflate(R.layout.remove_meal_list_item_dialog, null);
@@ -118,12 +118,36 @@ public class CookModifyMealList extends AppCompatActivity {
                     }
                 });
 
-
+        final Button noButton = dialogView.findViewById(R.id.removeMealFromMenu);
+        final Button yesButton = dialogView.findViewById(R.id.addMealtoOfferedList);
         final AlertDialog b = dialogBuilder.create();
         b.show();
+
+        noButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //navToMealList();
+                b.dismiss();
+            }
+        });
+        yesButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                removeItemFromList();
+
+            }
+        });
+
     }
     public void navHome(){
         Intent intent = new Intent(this, CookLoggedInScreen.class);
         startActivity(intent);
+    }
+    public void navToMealList(){
+        Intent intent = new Intent(this, CookModifyMealList.class);
+        startActivity(intent);
+    }
+    public void removeItemFromList(){
+        //to be implemented
     }
 }
