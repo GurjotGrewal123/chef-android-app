@@ -113,6 +113,23 @@ public class CookModifyMenu extends AppCompatActivity {
     }
 
     private void showModifyCurrentMealDialog(){
+        AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(this);
+        LayoutInflater inflater = getLayoutInflater();
+        final View dialogView = inflater.inflate(R.layout.remove_menu_item_dialog,null);
+        dialogBuilder.setView(dialogView);
+
+        dialogBuilder
+                .setCancelable(false)
+                .setNegativeButton("Cancel",new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog,int id) {
+                        // if this button is clicked, just close
+                        // the dialog box and do nothing
+                        dialog.cancel();
+                    }
+                });
+
+        final AlertDialog b = dialogBuilder.create();
+        b.show();
 
     }
 
