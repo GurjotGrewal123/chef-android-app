@@ -225,6 +225,37 @@ public class CookModifyMenu extends AppCompatActivity {
         final TextView mealPrice = (TextView) dialogView.findViewById(R.id.enterPrice);
         final TextView mealDesc = (TextView) dialogView.findViewById(R.id.enterItemDescription);
 
+        if (mealName.getText().toString().isEmpty()){
+            mealName.setError("A meal name is required");
+            mealName.requestFocus();
+            return;
+        }
+        if (mealType.getText().toString().isEmpty()){
+            mealType.setError("A meal name is required");
+            mealType.requestFocus();
+            return;
+        }
+        if (mealIngredients.getText().toString().isEmpty()){
+            mealIngredients.setError("A meal name is required");
+            mealIngredients.requestFocus();
+            return;
+        }
+        if (mealAllergens.getText().toString().isEmpty()){
+            mealAllergens.setError("A meal name is required");
+            mealAllergens.requestFocus();
+            return;
+        }
+        if (mealPrice.getText().toString().isEmpty()){
+            mealPrice.setError("A meal name is required");
+            mealPrice.requestFocus();
+            return;
+        }
+        if (mealDesc.getText().toString().isEmpty()){
+            mealDesc.setError("A meal name is required");
+            mealDesc.requestFocus();
+            return;
+        }
+
         String id = accountRef.child(mAuth.getUid()).child("menu").push().getKey();
         Meal newMeal = new Meal(mealName.getText().toString(), mealIngredients.getText().toString(), mealAllergens.getText().toString(), mealDesc.getText().toString(), Double.parseDouble(mealPrice.getText().toString()), mealType.getText().toString(), mAuth.getUid(), id);
 
