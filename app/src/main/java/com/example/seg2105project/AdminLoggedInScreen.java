@@ -16,7 +16,7 @@ public class AdminLoggedInScreen extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_admin_logged_in_screen);
-        reviewComplaintsBtn = findViewById(R.id.complaintButton);
+        reviewComplaintsBtn = findViewById(R.id.mealsButton);
 
         reviewComplaintsBtn.setOnClickListener(new View.OnClickListener() {
             @Override
