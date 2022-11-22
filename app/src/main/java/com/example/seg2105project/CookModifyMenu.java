@@ -255,6 +255,7 @@ public class CookModifyMenu extends AppCompatActivity {
             mealDesc.requestFocus();
             return;
         }
+
         if (!mealName.getText().toString().matches("[a-zA-Z]+") ){
             mealName.setError("can only contain alphabets");
             mealName.requestFocus();
