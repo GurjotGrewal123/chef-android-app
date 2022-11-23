@@ -95,11 +95,6 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    public void loginClient(){
-        Intent intent = new Intent(this, ClientLoggedInScreen.class);
-        startActivity(intent);
-    }
-
     public void loginCook(){
         Intent intent = new Intent(this, CookLoggedInScreen.class);
         startActivity(intent);
@@ -147,7 +142,7 @@ public class MainActivity extends AppCompatActivity {
                             }
                             else if (currUser.equals("CLIENT")){
                                 //setContentView(R.layout.activity_client_logged_in_screen);
-                                loginClient();
+                                login();
                             }
                             else{
                                 login();
