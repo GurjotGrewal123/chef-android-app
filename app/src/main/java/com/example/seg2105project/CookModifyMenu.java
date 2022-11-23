@@ -79,6 +79,8 @@ public class CookModifyMenu extends AppCompatActivity {
                 }
                 MenuMealList menuMealAdapter = new MenuMealList(CookModifyMenu.this, menuMealList);
                 meals.setAdapter(menuMealAdapter);
+
+                // menuMealAdapter.getFilter().filter() to filter...
             }
 
             @Override
@@ -142,6 +144,7 @@ public class CookModifyMenu extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 addMealToList(meal);
+                b.dismiss();
             }
         });
 
@@ -149,6 +152,7 @@ public class CookModifyMenu extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 removeMealFromMenu(meal);
+                b.dismiss();
             }
         });
 
@@ -163,6 +167,7 @@ public class CookModifyMenu extends AppCompatActivity {
 
     private void addMealToList(Meal meal){
         accountRef.child(mAuth.getUid()).child("offeredMeals").child(meal.getId()).setValue(meal);
+        FirebaseDatabase.getInstance().getReference("allOfferedMeals").child(meal.getId()).setValue(meal);
         Toast.makeText(CookModifyMenu.this, "Meal has been added to the offered meals list" , Toast.LENGTH_LONG).show();
 
     }
@@ -206,6 +211,7 @@ public class CookModifyMenu extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 addItemToMenu(dialogView);
+                b.dismiss();
             }
         });
 

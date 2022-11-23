@@ -44,6 +44,14 @@
             android:text="insert data"
             android:translationY="500dp" />
 
+        <Button
+            android:id="@+id/homeScreenComplaints"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#FF9800"
+            android:text="home"
+            android:translationY="500dp" />
+
     </LinearLayout>
 
 
