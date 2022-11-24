@@ -31,6 +31,9 @@ public class LoggedInScreen extends AppCompatActivity {
     private String userID;
     private Button logOutButton;
 
+    private Button menuButton;
+    private Button viewCooks;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,13 +47,27 @@ public class LoggedInScreen extends AppCompatActivity {
 
         final TextView userRole = findViewById(R.id.roleSpecifier);
 
-
-
         logOutButton = findViewById(R.id.logOutButton);
         logOutButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 logOut();
+            }
+        });
+
+        menuButton = findViewById(R.id.viewMenu);
+        menuButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                openMenu();
+            }
+        });
+
+        viewCooks = findViewById(R.id.cooks);
+        viewCooks.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                openCooks();
             }
         });
 
@@ -98,6 +115,14 @@ public class LoggedInScreen extends AppCompatActivity {
 
 
     public void logOut(){
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
+    }
+    public void openMenu(){
+        Intent intent = new Intent(this, MenuMealList.class);
+        startActivity(intent);
+    }
+    public void openCooks(){
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
     }
