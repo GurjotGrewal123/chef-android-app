@@ -53,12 +53,28 @@
             app:srcCompat="@drawable/seg2105logo" />
 
         <Button
+            android:id="@+id/cookPendingPurchases"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5sp"
+            android:backgroundTint="#FF9800"
+            android:text="Check pending purchases" />
+
+        <Button
             android:id="@+id/cookModifyMealList"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="5sp"
             android:backgroundTint="#FF9800"
             android:text="Modify Meal List" />
+
+        <Button
+            android:id="@+id/cookCheckProfile"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5sp"
+            android:backgroundTint="#FF9800"
+            android:text="Check Profile" />
 
         <Button
             android:id="@+id/cookModifyMenu"

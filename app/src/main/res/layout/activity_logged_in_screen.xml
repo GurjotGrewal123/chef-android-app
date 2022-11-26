@@ -60,11 +60,11 @@
             android:textSize="20sp" />
 
         <Button
-            android:id="@+id/viewMenu"
+            android:id="@+id/browseMeals"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:backgroundTint="#FF9800"
-            android:text="View Menu"
+            android:text="Browse Meals"
             android:textColorLink="#FF9800" />
 
         <Button
