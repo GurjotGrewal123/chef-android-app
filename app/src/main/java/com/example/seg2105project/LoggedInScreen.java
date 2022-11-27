@@ -70,6 +70,7 @@ public class LoggedInScreen extends AppCompatActivity {
 
 
 
+
     }
 
 
@@ -83,9 +84,10 @@ public class LoggedInScreen extends AppCompatActivity {
         startActivity(intent);
     }
     public void openCooks(){
-        Intent intent = new Intent(this, MainActivity.class);
+        Intent intent = new Intent(this, CookProfile.class);
         startActivity(intent);
     }
+
 
 
 }
