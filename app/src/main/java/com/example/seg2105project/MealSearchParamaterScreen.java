@@ -13,7 +13,8 @@ import android.widget.TextView;
 
 public class MealSearchParamaterScreen extends AppCompatActivity {
 
-    Button searchForMeal;
+    private Button searchForMeal;
+    private Button homeButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,21 +41,6 @@ public class MealSearchParamaterScreen extends AppCompatActivity {
                 homeNav();
             }
         });
-
-        mealType = findViewById(R.id.selectMealTypeD);
-        mealType.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                showMealTypeDialog();
-            }
-        });
-        cancel = findViewById(R.id.cancelMealSearch);
-        cancel.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                cancel();
-            }
-        });
     }
 
     private void openMeals(String mealNameParam, String mealPriceParam, String mealTypeParam){
@@ -74,21 +60,4 @@ public class MealSearchParamaterScreen extends AppCompatActivity {
         startActivity(intent);
     }
 
-    public void showMealTypeDialog(){
-        AlertDialog.Builder showMealType = new AlertDialog.Builder(this);
-        LayoutInflater inflater = getLayoutInflater();
-        final View dialogView = inflater.inflate(R.layout.select_meal_type_dialog,null);
-        showMealType.setView(dialogView);
-
-//        final Button  = (Button) dialogView.findViewById(R.id.);
-//        final Button  = (Button) dialogView.findViewById(R.id.);
-
-        final AlertDialog b = showMealType.create();
-        b.show();
-    }
-
-    public void cancel(){
-        Intent intent = new Intent(this, LoggedInScreen.class);
-        startActivity(intent);
-    }
 }
