@@ -3,9 +3,11 @@ package com.example.seg2105project;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.ListView;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -26,7 +28,12 @@ public class MealSearchResults extends AppCompatActivity {
 
     DatabaseReference allMealRef;
     DatabaseReference accountRef;
-    String mealNameParam;
+
+    private Button backButton;
+
+    private String mealNameParam;
+    private int mealPriceParam;
+    private String mealTypeParam;
     boolean suspensionNoti;
 
     @Override
@@ -42,6 +49,16 @@ public class MealSearchResults extends AppCompatActivity {
 
         Bundle b = getIntent().getExtras();
         mealNameParam = b.getString("mealNameParam");
+        mealPriceParam = b.getInt("mealPriceParam");
+        mealTypeParam = b.getString("mealTypeParam");
+
+        backButton = findViewById(R.id.backButton);
+        backButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                backNav();
+            }
+        });
     }
 
     protected void onStart(){
@@ -55,7 +72,15 @@ public class MealSearchResults extends AppCompatActivity {
                     Meal meal = postSnapshot.getValue(Meal.class);
                     if (!checkSuspendStatus(meal)) {
                         if (meal.getName().toLowerCase().contains(mealNameParam.toLowerCase())) {
-                            clientMealList.add(meal);
+                            if (meal.getTypes().toLowerCase().contains(mealTypeParam.toLowerCase())){
+                                if (mealPriceParam == -1){
+                                    clientMealList.add(meal);
+                                }
+                                else if (meal.getPrice() >= mealPriceParam){
+                                    clientMealList.add(meal);
+                                }
+                            }
+
                         }
                     }
                 }
@@ -108,5 +133,10 @@ public class MealSearchResults extends AppCompatActivity {
             }
         });
         return suspensionNoti;
+    }
+
+    private void backNav(){
+        Intent intent = new Intent(this, MealSearchParamaterScreen.class);
+        startActivity(intent);
     }
 }
