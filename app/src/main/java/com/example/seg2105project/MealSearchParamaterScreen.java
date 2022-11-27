@@ -15,6 +15,7 @@ public class MealSearchParamaterScreen extends AppCompatActivity {
 
     Button searchForMeal;
     Button mealType;
+    Button cancel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,6 +39,13 @@ public class MealSearchParamaterScreen extends AppCompatActivity {
                 showMealTypeDialog();
             }
         });
+        cancel = findViewById(R.id.cancelMealSearch);
+        cancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                cancel();
+            }
+        });
     }
 
     private void openMeals(String mealNameParam){
@@ -57,5 +65,10 @@ public class MealSearchParamaterScreen extends AppCompatActivity {
 
         final AlertDialog b = showMealType.create();
         b.show();
+    }
+
+    public void cancel(){
+        Intent intent = new Intent(this, LoggedInScreen.class);
+        startActivity(intent);
     }
 }
