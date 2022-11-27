@@ -149,9 +149,18 @@ public class MealSearchResults extends AppCompatActivity {
         dialogBuilder.setView(dialogView);
 
 
-        final Button noButton = dialogView.findViewById(R.id.removeMealFromMenu);
-        final Button yesButton = dialogView.findViewById(R.id.addMealtoOfferedList);
+        final Button noButton = dialogView.findViewById(R.id.cancelMealButton);
         final AlertDialog b = dialogBuilder.create();
+
         b.show();
+
+        noButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                b.dismiss();
+            }
+        });
+
+
     }
 }
