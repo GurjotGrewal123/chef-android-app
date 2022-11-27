@@ -1,10 +1,12 @@
 package com.example.seg2105project;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
@@ -80,7 +82,6 @@ public class MealSearchResults extends AppCompatActivity {
                                     clientMealList.add(meal);
                                 }
                             }
-
                         }
                     }
                 }
@@ -108,6 +109,7 @@ public class MealSearchResults extends AppCompatActivity {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
                         Cook cook = snapshot.getValue(Cook.class);
+                        showModifyCurrentMealListDialog();
                     }
 
                     @Override
@@ -138,5 +140,18 @@ public class MealSearchResults extends AppCompatActivity {
     private void backNav(){
         Intent intent = new Intent(this, MealSearchParamaterScreen.class);
         startActivity(intent);
+    }
+
+    public void showModifyCurrentMealListDialog(){
+        AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(this);
+        LayoutInflater inflater = getLayoutInflater();
+        final View dialogView = inflater.inflate(R.layout.activity_meal_preview_screen, null);
+        dialogBuilder.setView(dialogView);
+
+
+        final Button noButton = dialogView.findViewById(R.id.removeMealFromMenu);
+        final Button yesButton = dialogView.findViewById(R.id.addMealtoOfferedList);
+        final AlertDialog b = dialogBuilder.create();
+        b.show();
     }
 }
