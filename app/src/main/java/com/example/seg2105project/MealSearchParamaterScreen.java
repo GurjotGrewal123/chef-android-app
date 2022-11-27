@@ -56,7 +56,7 @@ public class MealSearchParamaterScreen extends AppCompatActivity {
     }
 
     private void homeNav(){
-        Intent intent = new Intent(this, CookLoggedInScreen.class);
+        Intent intent = new Intent(this, LoggedInScreen.class);
         startActivity(intent);
     }
 
