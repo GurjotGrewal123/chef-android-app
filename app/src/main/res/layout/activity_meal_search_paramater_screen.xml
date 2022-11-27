@@ -23,7 +23,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="10sp"
-            android:fontFamily="@font/alata"
+            android:fontFamily="sans-serif"
             android:gravity="center_horizontal"
             android:text="Welcome! Please specify what kind of meal you would like to search for today"
             android:textSize="20sp" />
@@ -34,28 +34,29 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:ems="15"
+            android:fontFamily="sans-serif"
             android:hint="Enter meal name"
             android:inputType="textPersonName"
             android:textAlignment="center" />
-
-        <Button
-            android:id="@+id/selectMealTypeD"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginTop="10sp"
-            android:layout_marginBottom="10sp"
-            android:backgroundTint="#FF9800"
-            android:text="Select Meal Type" />
 
         <Button
             android:id="@+id/searchForMeal"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
+            android:layout_marginTop="10sp"
             android:layout_marginBottom="10sp"
             android:backgroundTint="#FF9800"
             android:text="Search for Meal" />
+
+        <Button
+            android:id="@+id/selectMealTypeD"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="10sp"
+            android:backgroundTint="#FF9800"
+            android:text="Select Meal Type" />
 
         <Button
             android:id="@+id/cancelMealSearch"

@@ -23,7 +23,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="10sp"
-            android:fontFamily="@font/alata"
+            android:fontFamily="sans-serif"
             android:gravity="center_horizontal"
             android:text="Here is the meal you selected:"
             android:textSize="20sp" />
@@ -35,7 +35,7 @@
             android:layout_marginLeft="10sp"
             android:layout_marginRight="10sp"
             android:layout_marginBottom="5sp"
-            android:fontFamily="@font/alata"
+            android:fontFamily="sans-serif"
             android:text="Meal Name: "
             android:textSize="18sp" />
 
@@ -46,7 +46,7 @@
             android:layout_marginLeft="10sp"
             android:layout_marginRight="10sp"
             android:layout_marginBottom="5sp"
-            android:fontFamily="@font/alata"
+            android:fontFamily="sans-serif"
             android:text="Price:"
             android:textSize="18sp" />
 
@@ -57,7 +57,7 @@
             android:layout_marginLeft="10sp"
             android:layout_marginRight="10sp"
             android:layout_marginBottom="5sp"
-            android:fontFamily="@font/alata"
+            android:fontFamily="sans-serif"
             android:text="Ingredients:"
             android:textSize="18sp" />
 
@@ -68,7 +68,7 @@
             android:layout_marginLeft="10sp"
             android:layout_marginRight="10sp"
             android:layout_marginBottom="5sp"
-            android:fontFamily="@font/alata"
+            android:fontFamily="sans-serif"
             android:text="Allergerns:"
             android:textSize="18sp" />
 
@@ -79,7 +79,7 @@
             android:layout_marginLeft="10sp"
             android:layout_marginRight="10sp"
             android:layout_marginBottom="5sp"
-            android:fontFamily="@font/alata"
+            android:fontFamily="sans-serif"
             android:text="Meal Description:"
             android:textSize="18sp" />
 
@@ -90,7 +90,7 @@
             android:layout_marginLeft="10sp"
             android:layout_marginRight="10sp"
             android:layout_marginBottom="5sp"
-            android:fontFamily="@font/alata"
+            android:fontFamily="sans-serif"
             android:text="Cook: "
             android:textSize="18sp" />
 
@@ -101,7 +101,7 @@
             android:layout_marginLeft="10sp"
             android:layout_marginRight="10sp"
             android:layout_marginBottom="5sp"
-            android:fontFamily="@font/alata"
+            android:fontFamily="sans-serif"
             android:text="Cook Rating (out of 5):"
             android:textSize="18sp" />
 
@@ -110,7 +110,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="10sp"
-            android:fontFamily="@font/alata"
+            android:fontFamily="sans-serif"
             android:gravity="center_horizontal"
             android:text="Would you like to purchase this meal?"
             android:textSize="20sp" />

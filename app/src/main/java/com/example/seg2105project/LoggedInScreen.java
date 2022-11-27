@@ -70,43 +70,6 @@ public class LoggedInScreen extends AppCompatActivity {
 
 
 
-        reference.child(userID).addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot){
-                Account userProfile = null;
-                if (snapshot.getValue(Client.class) != null) {
-                    userProfile = snapshot.getValue(Client.class);
-                }
-                else if (snapshot.getValue(Cook.class) != null) {
-                    userProfile = snapshot.getValue(Cook.class);
-                }
-                else if (snapshot.getValue(Administrator.class) != null){
-                    userProfile = snapshot.getValue(Administrator.class);
-                }
-
-                if (userProfile != null) {
-                    if (userProfile.getType() == AccountType.CLIENT){
-                        userRole.setText("You are signed in as a client");
-//                        Intent intent = new Intent(this, .class);
-//                        startActivity(intent);
-                    }
-                    else{
-                        userRole.setText("Uh Oh! Something went wrong!");
-                    }
-                }
-                else{
-                    userRole.setText("Uh Oh! Something went wrong!");
-                }
-
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-        });
-
-
     }
 
 
@@ -116,7 +79,7 @@ public class LoggedInScreen extends AppCompatActivity {
         startActivity(intent);
     }
     public void openMenu(){
-        Intent intent = new Intent(this, MenuMealList.class);
+        Intent intent = new Intent(this, MealSearchParamaterScreen.class);
         startActivity(intent);
     }
     public void openCooks(){

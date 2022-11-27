@@ -80,7 +80,6 @@ public class CookModifyMenu extends AppCompatActivity {
                 MenuMealList menuMealAdapter = new MenuMealList(CookModifyMenu.this, menuMealList);
                 meals.setAdapter(menuMealAdapter);
 
-                // menuMealAdapter.getFilter().filter() to filter...
             }
 
             @Override

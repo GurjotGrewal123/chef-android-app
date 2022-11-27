@@ -40,8 +40,6 @@ public class CookLoggedInScreen extends AppCompatActivity {
         userID = user.getUid();
 
         final TextView userRole = findViewById(R.id.roleCookSpec);
-        userRole.setText("You are signed in as a cook");
-
 
         susCheckRef = reference.child(userID).child("suspension");
         susCheckRef.addListenerForSingleValueEvent(new ValueEventListener() {
