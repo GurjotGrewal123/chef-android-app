@@ -5,7 +5,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -18,8 +17,6 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-import java.util.Date;
-
 /**
  * this class if for the main log in screen. all users will see this screen and then be redirected according to their account type.
  *
@@ -30,6 +27,9 @@ public class LoggedInScreen extends AppCompatActivity {
     private DatabaseReference reference;
     private String userID;
     private Button logOutButton;
+
+    private Button menuButton;
+    private Button viewCooks;
 
 
     @Override
@@ -44,13 +44,27 @@ public class LoggedInScreen extends AppCompatActivity {
 
         final TextView userRole = findViewById(R.id.roleSpecifier);
 
-
-
         logOutButton = findViewById(R.id.logOutButton);
         logOutButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 logOut();
+            }
+        });
+
+        menuButton = findViewById(R.id.browseMeals);
+        menuButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                openMenu();
+            }
+        });
+
+        viewCooks = findViewById(R.id.cooks);
+        viewCooks.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                openCooks();
             }
         });
 
@@ -98,6 +112,14 @@ public class LoggedInScreen extends AppCompatActivity {
 
 
     public void logOut(){
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
+    }
+    public void openMenu(){
+        Intent intent = new Intent(this, MenuMealList.class);
+        startActivity(intent);
+    }
+    public void openCooks(){
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
     }

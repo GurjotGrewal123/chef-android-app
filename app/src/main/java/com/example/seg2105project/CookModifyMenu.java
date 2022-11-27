@@ -262,6 +262,37 @@ public class CookModifyMenu extends AppCompatActivity {
             return;
         }
 
+        if (!mealName.getText().toString().matches("[a-zA-Z]+") ){
+            mealName.setError("can only contain alphabets");
+            mealName.requestFocus();
+            return;
+        }
+        if (!mealType.getText().toString().matches("[a-zA-Z]+") ){
+            mealType.setError("can only contain alphabets");
+            mealType.requestFocus();
+            return;
+        }
+        if (!mealIngredients.getText().toString().matches("[a-zA-Z]+") ){
+            mealIngredients.setError("can only contain alphabets");
+            mealIngredients.requestFocus();
+            return;
+        }
+        if (!mealAllergens.getText().toString().matches("[a-zA-Z]+") ){
+            mealAllergens.setError("can only contain alphabets");
+            mealAllergens.requestFocus();
+            return;
+        }
+        if (!mealPrice.getText().toString().matches("[a-zA-Z]+") ){
+            mealPrice.setError("can only contain alphabets");
+            mealPrice.requestFocus();
+            return;
+        }
+        if (!mealDesc.getText().toString().matches("[a-zA-Z]+") ){
+            mealDesc.setError("can only contain alphabets");
+            mealDesc.requestFocus();
+            return;
+        }
+
         String id = accountRef.child(mAuth.getUid()).child("menu").push().getKey();
         Meal newMeal = new Meal(mealName.getText().toString(), mealIngredients.getText().toString(), mealAllergens.getText().toString(), mealDesc.getText().toString(), Double.parseDouble(mealPrice.getText().toString()), mealType.getText().toString(), mAuth.getUid(), id);
 
