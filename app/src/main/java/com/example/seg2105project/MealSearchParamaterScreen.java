@@ -1,9 +1,11 @@
 package com.example.seg2105project;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -11,8 +13,7 @@ import android.widget.TextView;
 
 public class MealSearchParamaterScreen extends AppCompatActivity {
 
-    private Button searchForMeal;
-    private Button homeButton;
+    Button searchForMeal;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +40,21 @@ public class MealSearchParamaterScreen extends AppCompatActivity {
                 homeNav();
             }
         });
+
+        mealType = findViewById(R.id.selectMealTypeD);
+        mealType.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                showMealTypeDialog();
+            }
+        });
+        cancel = findViewById(R.id.cancelMealSearch);
+        cancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                cancel();
+            }
+        });
     }
 
     private void openMeals(String mealNameParam, String mealPriceParam, String mealTypeParam){
@@ -55,6 +71,24 @@ public class MealSearchParamaterScreen extends AppCompatActivity {
 
     private void homeNav(){
         Intent intent = new Intent(this, CookLoggedInScreen.class);
+        startActivity(intent);
+    }
+
+    public void showMealTypeDialog(){
+        AlertDialog.Builder showMealType = new AlertDialog.Builder(this);
+        LayoutInflater inflater = getLayoutInflater();
+        final View dialogView = inflater.inflate(R.layout.select_meal_type_dialog,null);
+        showMealType.setView(dialogView);
+
+//        final Button  = (Button) dialogView.findViewById(R.id.);
+//        final Button  = (Button) dialogView.findViewById(R.id.);
+
+        final AlertDialog b = showMealType.create();
+        b.show();
+    }
+
+    public void cancel(){
+        Intent intent = new Intent(this, LoggedInScreen.class);
         startActivity(intent);
     }
 }
