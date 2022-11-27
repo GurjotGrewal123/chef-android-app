@@ -67,6 +67,13 @@ public class ComplaintsReviewScreen extends AppCompatActivity {
             }
         });
 
+        Button homeBtn = findViewById(R.id.homeScreenComplaints);
+        homeBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                homeScreen();
+            }
+        });
     }
 
     protected void onStart(){
@@ -121,16 +128,6 @@ public class ComplaintsReviewScreen extends AppCompatActivity {
         final View dialogView = inflater.inflate(R.layout.activity_complaint_pop_up,null);
         dialogBuilder.setView(dialogView);
 
-        dialogBuilder
-                .setCancelable(false)
-                .setNegativeButton("Cancel",new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog,int id) {
-                        // if this button is clicked, just close
-                        // the dialog box and do nothing
-                        dialog.cancel();
-                    }
-                });
-
         final TextView cookName = (TextView) dialogView.findViewById(R.id.nameOfCook);
         final TextView complaintText = (TextView) dialogView.findViewById(R.id.complaintForCook);
         final TextView dateOfComplaint = (TextView) dialogView.findViewById(R.id.dateComplainedAbout);
@@ -138,28 +135,38 @@ public class ComplaintsReviewScreen extends AppCompatActivity {
         final Button permenantlySuspend = (Button) dialogView.findViewById(R.id.permaSuspend);
         final Button temporarilySuspend = (Button) dialogView.findViewById(R.id.tempSuspend);
         final Button dismissComplaint = (Button) dialogView.findViewById(R.id.dissmissComplaint);
+        final Button cancelDialogBtn = (Button) dialogView.findViewById(R.id.cancelDialogComplaint);
 
         cookName.setText("Cook's Name: " + cookname);
         complaintText.setText("This was issued on: "+ date);
         final AlertDialog b = dialogBuilder.create();
         b.show();
+
         permenantlySuspend.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 pSuspend();
-
+                b.dismiss();
             }
         });
         temporarilySuspend.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                         tSuspend(cookID);
+                        b.dismiss();
                     }
         });
         dismissComplaint.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 disCom(complaintID);
+                b.dismiss();
+            }
+        });
+        cancelDialogBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                b.dismiss();
             }
         });
     }
@@ -188,6 +195,11 @@ public class ComplaintsReviewScreen extends AppCompatActivity {
 
         Complaint complaint = new Complaint(summary, userID, cookID, id);
         reference.child(id).setValue(complaint);
+    }
+
+    public void homeScreen(){
+        Intent intent = new Intent(this, AdminLoggedInScreen.class);
+        startActivity(intent);
     }
 
 }
