@@ -43,11 +43,12 @@
             android:textSize="20sp" />
 
         <Button
-            android:id="@+id/mealsButton"
+            android:id="@+id/complaintButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:backgroundTint="#FF9800"
             android:fontFamily="sans-serif"
+            android:onClick="logOutOnClick"
             android:text="Review Complaints" />
 
         <Button
@@ -58,6 +59,7 @@
             android:fontFamily="sans-serif"
             android:onClick="logOutOnClick"
             android:text="@string/log_out" />
+
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
