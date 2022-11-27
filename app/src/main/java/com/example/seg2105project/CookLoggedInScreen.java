@@ -29,6 +29,8 @@ public class CookLoggedInScreen extends AppCompatActivity {
     DatabaseReference susCheckRef;
     private Button MenuScreenButton;
     private Button MealListScreenButton;
+    private Button checkPendingPurchases;
+    private Button checkProfile;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -113,6 +115,23 @@ public class CookLoggedInScreen extends AppCompatActivity {
             }
         });
 
+        checkPendingPurchases = findViewById(R.id.cookPendingPurchases);
+        checkPendingPurchases.setOnClickListener((new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                navToPendingPurchases();
+            }
+        }));
+
+        checkProfile= findViewById(R.id.cookCheckProfile);
+        checkProfile.setOnClickListener((new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                navTocheckProfile();
+            }
+        }));
+
+
     }
 
 
@@ -165,6 +184,16 @@ public class CookLoggedInScreen extends AppCompatActivity {
 
     public void logOut(){
         Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
+    }
+
+    public void navToPendingPurchases(){
+        Intent intent = new Intent(this, PendingPurchasesCookScreen.class);
+        startActivity(intent);
+    }
+
+    public void navTocheckProfile(){
+        Intent intent = new Intent(this, CookProfile.class);
         startActivity(intent);
     }
 
