@@ -11,6 +11,8 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
@@ -30,6 +32,7 @@ public class MealSearchResults extends AppCompatActivity {
 
     DatabaseReference allMealRef;
     DatabaseReference accountRef;
+    FirebaseAuth mAuth;
 
     private Button backButton;
 
@@ -37,12 +40,15 @@ public class MealSearchResults extends AppCompatActivity {
     private int mealPriceParam;
     private String mealTypeParam;
     boolean suspensionNoti;
+    int n;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_meal_search_results);
 
+        n = 0;
+        mAuth = FirebaseAuth.getInstance();
         allMealRef = FirebaseDatabase.getInstance().getReference("allOfferedMeals");
         accountRef = FirebaseDatabase.getInstance().getReference("accounts");
         meals = findViewById(R.id.clientMealList);
@@ -109,7 +115,7 @@ public class MealSearchResults extends AppCompatActivity {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
                         Cook cook = snapshot.getValue(Cook.class);
-                        showModifyCurrentMealListDialog();
+                        showModifyCurrentMealListDialog(cook, meal);
                     }
 
                     @Override
@@ -142,7 +148,7 @@ public class MealSearchResults extends AppCompatActivity {
         startActivity(intent);
     }
 
-    public void showModifyCurrentMealListDialog(){
+    public void showModifyCurrentMealListDialog(Cook cook, Meal meal){
         AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(this);
         LayoutInflater inflater = getLayoutInflater();
         final View dialogView = inflater.inflate(R.layout.activity_meal_preview_screen, null);
@@ -150,7 +156,25 @@ public class MealSearchResults extends AppCompatActivity {
 
 
         final Button noButton = dialogView.findViewById(R.id.cancelMealButton);
+        final Button buyButton = dialogView.findViewById(R.id.buyMealButton);
         final AlertDialog b = dialogBuilder.create();
+
+        final TextView mealName = dialogView.findViewById(R.id.mealName);
+        final TextView mealPrice = dialogView.findViewById(R.id.mealPrice);
+        final TextView mealType = dialogView.findViewById(R.id.mealType);
+        final TextView mealIngredients = dialogView.findViewById(R.id.mealIngredients);
+        final TextView mealAllergens = dialogView.findViewById(R.id.mealAllergens);
+        final TextView mealDescription = dialogView.findViewById(R.id.mealDescription);
+        final TextView cookName = dialogView.findViewById(R.id.cookUsername);
+        final TextView cookRating = dialogView.findViewById(R.id.cookRating);
+
+        mealName.setText("Meal Name: " + meal.getName());
+        mealPrice.setText("Price: " + meal.getPrice());
+        mealType.setText("Type: " + meal.getTypes());
+        mealAllergens.setText("Allergens: " + meal.getAllergens());
+        mealIngredients.setText("Ingredients: " + meal.getIngredients());
+        mealDescription.setText("Meal Description: " + meal.getDescription());
+        cookName.setText("Cook: " + cook.getName());
 
         b.show();
 
@@ -161,6 +185,36 @@ public class MealSearchResults extends AppCompatActivity {
             }
         });
 
-
+        buyButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                purchaseMeal(meal);
+                b.dismiss();
+            }
+        });
     }
+
+    private void purchaseMeal(Meal meal){
+        int num = getTotalPurchases(meal) + 1;
+        accountRef.child(meal.getCookAssignedID()).child("totalPurchases").setValue(num);
+        accountRef.child(meal.getCookAssignedID()).child("yourPurchaseRequests").push().setValue(meal);
+        accountRef.child(mAuth.getUid()).child("yourOrders").push().setValue(meal);
+        Toast.makeText(MealSearchResults.this, "Your order has been processed. Please check your orders to view its status." , Toast.LENGTH_LONG).show();
+    }
+
+    private int getTotalPurchases(Meal meal){
+        accountRef.child(meal.getCookAssignedID()).child("totalPurchases").addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                n = snapshot.getValue(Integer.class);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+        return n;
+    }
+
 }
