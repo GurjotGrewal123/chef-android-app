@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".PendingPurchasesCookScreen">
+    tools:context=".CustomerPreviousOrders">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -25,7 +25,7 @@
             android:layout_gravity="center_horizontal"
             android:layout_marginBottom="10sp"
             android:fontFamily="@font/alata"
-            android:text="Here are the purchases that are currently pending:"
+            android:text="Here is a list of your previous orders:"
             android:textAlignment="center"
             android:textSize="20sp" />
 
@@ -34,5 +34,4 @@
             android:layout_height="match_parent" />
 
     </LinearLayout>
-
 </androidx.constraintlayout.widget.ConstraintLayout>

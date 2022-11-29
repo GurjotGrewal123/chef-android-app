@@ -13,6 +13,27 @@
         android:theme="@style/Theme.SEG2105Project"
         tools:targetApi="31">
         <activity
+            android:name=".ComplainAboutCookScreen"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".PreviousOrderItemPreviewScreen"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".CustomerPreviousOrders"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
             android:name=".CookProfile"
             android:exported="false">
             <meta-data
