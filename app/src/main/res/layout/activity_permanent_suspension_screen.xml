@@ -25,7 +25,7 @@
             android:layout_marginLeft="10sp"
             android:layout_marginRight="10sp"
             android:layout_marginBottom="10sp"
-            android:fontFamily="@font/alata"
+            android:fontFamily="sans-serif"
             android:gravity="center_horizontal"
             android:text="Oh oh! It looks like your account has been permenantly suspended for violating our terms of service! Do not hesitate to contact us for further information"
             android:textSize="24sp" />

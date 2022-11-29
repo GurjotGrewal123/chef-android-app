@@ -117,7 +117,22 @@ public class CookLoggedInScreen extends AppCompatActivity {
         checkPendingPurchases.setOnClickListener((new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                navToPendingPurchases();
+                susCheckRef.addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        if ((boolean)snapshot.getValue() == true) {
+                            Toast.makeText(CookLoggedInScreen.this, "Sorry, you're restricted from doing this because you're suspended!" , Toast.LENGTH_LONG).show();
+                        }
+                        else{
+                            navToPendingPurchases();
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+
+                    }
+                });
             }
         }));
 
@@ -125,7 +140,22 @@ public class CookLoggedInScreen extends AppCompatActivity {
         checkProfile.setOnClickListener((new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                navTocheckProfile();
+                susCheckRef.addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        if ((boolean)snapshot.getValue() == true) {
+                            Toast.makeText(CookLoggedInScreen.this, "Sorry, you're restricted from doing this because you're suspended!" , Toast.LENGTH_LONG).show();
+                        }
+                        else{
+                            navTocheckProfile();
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+
+                    }
+                });
             }
         }));
 
