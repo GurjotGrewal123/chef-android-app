@@ -168,7 +168,6 @@ public class CookModifyMenu extends AppCompatActivity {
         accountRef.child(mAuth.getUid()).child("offeredMeals").child(meal.getId()).setValue(meal);
         FirebaseDatabase.getInstance().getReference("allOfferedMeals").child(meal.getId()).setValue(meal);
         Toast.makeText(CookModifyMenu.this, "Meal has been added to the offered meals list" , Toast.LENGTH_LONG).show();
-
     }
 
     private void removeMealFromMenu(Meal meal){
@@ -209,8 +208,10 @@ public class CookModifyMenu extends AppCompatActivity {
         addMealToMenuBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                addItemToMenu(dialogView);
-                b.dismiss();
+                boolean success = addItemToMenu(dialogView);
+                if (success){
+                    b.dismiss();
+                }
             }
         });
 
@@ -222,7 +223,7 @@ public class CookModifyMenu extends AppCompatActivity {
         });
     }
 
-    private void addItemToMenu(View dialogView){
+    private boolean addItemToMenu(View dialogView){
         final TextView mealName = (TextView) dialogView.findViewById(R.id.enterMealName);
         final TextView mealType = (TextView) dialogView.findViewById(R.id.enterMealType);
         final TextView mealIngredients = (TextView) dialogView.findViewById(R.id.enterIngredients);
@@ -233,72 +234,66 @@ public class CookModifyMenu extends AppCompatActivity {
         if (mealName.getText().toString().isEmpty()){
             mealName.setError("A meal name is required");
             mealName.requestFocus();
-            return;
+            return false;
         }
+
         if (mealType.getText().toString().isEmpty()){
             mealType.setError("A meal name is required");
             mealType.requestFocus();
-            return;
+            return false;
         }
         if (mealIngredients.getText().toString().isEmpty()){
             mealIngredients.setError("A meal name is required");
             mealIngredients.requestFocus();
-            return;
+            return false;
         }
         if (mealAllergens.getText().toString().isEmpty()){
             mealAllergens.setError("A meal name is required");
             mealAllergens.requestFocus();
-            return;
+            return false;
         }
         if (mealPrice.getText().toString().isEmpty()){
             mealPrice.setError("A meal name is required");
             mealPrice.requestFocus();
-            return;
+            return false;
         }
         if (mealDesc.getText().toString().isEmpty()){
             mealDesc.setError("A meal name is required");
             mealDesc.requestFocus();
-            return;
+            return false;
         }
 
         if (!mealName.getText().toString().matches("[a-zA-Z]+") ){
             mealName.setError("can only contain alphabets");
             mealName.requestFocus();
-            return;
+            return false;
         }
         if (!mealType.getText().toString().matches("[a-zA-Z]+") ){
             mealType.setError("can only contain alphabets");
             mealType.requestFocus();
-            return;
+            return false;
         }
         if (!mealIngredients.getText().toString().matches("[a-zA-Z]+") ){
             mealIngredients.setError("can only contain alphabets");
             mealIngredients.requestFocus();
-            return;
+            return false;
         }
         if (!mealAllergens.getText().toString().matches("[a-zA-Z]+") ){
             mealAllergens.setError("can only contain alphabets");
             mealAllergens.requestFocus();
-            return;
-        }
-        if (!mealPrice.getText().toString().matches("[a-zA-Z]+") ){
-            mealPrice.setError("can only contain alphabets");
-            mealPrice.requestFocus();
-            return;
+            return false;
         }
         if (!mealDesc.getText().toString().matches("[a-zA-Z]+") ){
             mealDesc.setError("can only contain alphabets");
             mealDesc.requestFocus();
-            return;
+            return false;
         }
 
         String id = accountRef.child(mAuth.getUid()).child("menu").push().getKey();
         Meal newMeal = new Meal(mealName.getText().toString(), mealIngredients.getText().toString(), mealAllergens.getText().toString(), mealDesc.getText().toString(), Double.parseDouble(mealPrice.getText().toString()), mealType.getText().toString(), mAuth.getUid(), id);
-
         accountRef.child(mAuth.getUid()).child("menu").child(id).setValue(newMeal);
-
         Toast.makeText(CookModifyMenu.this, "Meal has been added to the menu" , Toast.LENGTH_LONG).show();
-
+        return true;
     }
 
     private void navToCookHome(){

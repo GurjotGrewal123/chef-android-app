@@ -22,6 +22,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
@@ -36,10 +37,11 @@ public class MealSearchResults extends AppCompatActivity {
 
     private Button backButton;
 
+    boolean suspensionNoti;
+
     private String mealNameParam;
     private int mealPriceParam;
     private String mealTypeParam;
-    boolean suspensionNoti;
     int n;
 
     @Override
@@ -69,6 +71,7 @@ public class MealSearchResults extends AppCompatActivity {
         });
     }
 
+
     protected void onStart(){
         super.onStart();
         allMealRef.addValueEventListener(new ValueEventListener() {
@@ -78,20 +81,25 @@ public class MealSearchResults extends AppCompatActivity {
                 for(DataSnapshot postSnapshot: dataSnapshot.getChildren()){
 
                     Meal meal = postSnapshot.getValue(Meal.class);
-                    if (!checkSuspendStatus(meal)) {
-                        if (meal.getName().toLowerCase().contains(mealNameParam.toLowerCase())) {
-                            if (meal.getTypes().toLowerCase().contains(mealTypeParam.toLowerCase())){
-                                if (mealPriceParam == -1){
-                                    clientMealList.add(meal);
-                                }
-                                else if (meal.getPrice() >= mealPriceParam){
-                                    clientMealList.add(meal);
-                                }
-                            }
-                        }
-                    }
-                }
 
+                    DatabaseReference susCheck = accountRef.child(meal.getCookAssignedID()).child("suspension");
+                    susCheck.addListenerForSingleValueEvent(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot snapshot) {
+                            suspensionNoti = snapshot.getValue(Boolean.class);
+                        }
+
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError error) {
+                        }
+                    });
+
+                    System.out.println(suspensionNoti);
+                    if (clientListAdd(suspensionNoti, meal)){
+                        clientMealList.add(meal);
+                    }
+
+                }
                 MenuMealList menuMealAdapter = new MenuMealList(MealSearchResults.this, clientMealList);
                 meals.setAdapter(menuMealAdapter);
 
@@ -128,19 +136,20 @@ public class MealSearchResults extends AppCompatActivity {
         });
     }
 
-    private boolean checkSuspendStatus(Meal meal){
-        accountRef.child(meal.getCookAssignedID()).child("suspension").addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                suspensionNoti = snapshot.getValue(Boolean.class);
-            }
 
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
+    private boolean clientListAdd(boolean susNoti, Meal meal){
+        if (susNoti == false) {
+            if (meal.getName().toLowerCase().contains(mealNameParam.toLowerCase())) {
+                if (meal.getTypes().toLowerCase().contains(mealTypeParam.toLowerCase())) {
+                    if (mealPriceParam == -1) {
+                        return true;
+                    } else if (meal.getPrice() <= mealPriceParam) {
+                        return true;
+                    }
+                }
             }
-        });
-        return suspensionNoti;
+        }
+        return false;
     }
 
     private void backNav(){
