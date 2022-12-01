@@ -27,3 +27,4 @@ Class list
     MainActivity
     Meal
 
+Tal Musienko responsibilities: UI design, test cases and initial listview implementation
