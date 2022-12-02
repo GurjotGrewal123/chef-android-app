@@ -28,3 +28,4 @@ Class list
     Meal
 
 Tal Musienko responsibilities: UI design, test cases and initial listview implementation
+Jad Bader responsibilities: firebase initial setup, admin login initial setup, linking and implementing UI
