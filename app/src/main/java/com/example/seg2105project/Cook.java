@@ -15,7 +15,6 @@ public class Cook extends Account {
      * hold the list of meals that a cook offers
      */
     private ArrayList<Meal> menu;
-    private HashMap<Meal, Integer> ratings;
     /**
      * list of the types of cuisine that a cook can offer
      */
@@ -27,6 +26,8 @@ public class Cook extends Account {
     private boolean suspension;
 
     private Date suspensionTime;
+
+    private Rating rating;
 
     /**
      *
@@ -41,6 +42,7 @@ public class Cook extends Account {
         super(email, username, password, name, address, AccountType.COOK);
         this.suspension = false;
         this.menu = new ArrayList<>();
+        this.rating = new Rating();
     }
 
     public Cook(){
@@ -78,16 +80,9 @@ public class Cook extends Account {
         return menu;
     }
 
-    public void addRating(Meal meal, Integer rating) {
-        if (!ratings.containsKey(meal)) {
-            ratings.put(meal, rating);
-        } else {
-            ratings.replace(meal, rating);
-        }
+    public boolean getSuspension() {
+        return suspension;
     }
-    public boolean isSuspension() {return (suspension = true);}
-
-    public boolean endSuspension() {return (suspension = false);}
 
     public void setSuspensionTime(Date time){
         suspensionTime = time;
@@ -97,8 +92,11 @@ public class Cook extends Account {
         return suspensionTime;
     }
 
-    public HashMap<Meal, Integer> getRatings() {
-        return ratings;
+    public void setRating(Rating rating) {
+        this.rating = rating;
     }
 
+    public Rating getRating() {
+        return rating;
+    }
 }

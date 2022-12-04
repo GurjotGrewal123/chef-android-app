@@ -24,12 +24,13 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:layout_marginBottom="10sp"
-            android:fontFamily="@font/alata"
+            android:fontFamily="sans-serif"
             android:text="Here is a list of your previous orders:"
             android:textAlignment="center"
             android:textSize="20sp" />
 
         <ListView
+            android:id="@+id/orders"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
 

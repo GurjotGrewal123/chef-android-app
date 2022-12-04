@@ -16,10 +16,18 @@
             android:textSize="14sp" />
 
         <TextView
+            android:id="@+id/purchaseOrderID"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Order ID: "
+            android:textSize="14sp" />
+
+        <TextView
             android:id="@+id/purchaseStatus"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Price: "
+            android:text="Status: "
             android:textSize="14sp" />
+
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

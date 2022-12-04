@@ -22,7 +22,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10sp"
-            android:fontFamily="@font/alata"
+            android:fontFamily="sans-serif"
             android:gravity="center"
             android:text="What would you like to rate the cook out of 5?"
             android:textSize="20sp" />
@@ -33,6 +33,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="10sp"
             android:layout_marginBottom="10sp"
+            android:fontFamily="sans-serif"
             android:gravity="start|top"
             android:hint="Enter a number from 0-5"
             android:inputType="textMultiLine"

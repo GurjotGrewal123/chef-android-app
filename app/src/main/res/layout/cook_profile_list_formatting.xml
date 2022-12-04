@@ -14,7 +14,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="5sp"
             android:layout_marginRight="5sp"
-            android:fontFamily="@font/alata"
+            android:fontFamily="sans-serif"
             android:text="Cook name:" />
 
         <TextView
@@ -23,7 +23,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="5sp"
             android:layout_marginRight="5sp"
-            android:fontFamily="@font/alata"
+            android:fontFamily="sans-serif"
             android:text="Rating: x/5" />
 
         <TextView
@@ -32,7 +32,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="5sp"
             android:layout_marginRight="5sp"
-            android:fontFamily="@font/alata"
+            android:fontFamily="sans-serif"
             android:text="Description:" />
 
     </LinearLayout>

@@ -24,8 +24,8 @@ public class MenuMealList extends ArrayAdapter<Meal> {
         LayoutInflater inflater = context.getLayoutInflater();
         View listViewMenuMeals = inflater.inflate(R.layout.activity_menu_meal_list,null,true);
 
-        TextView mealName = (TextView) listViewMenuMeals.findViewById(R.id.menuMealName);
-        TextView mealPrice = (TextView) listViewMenuMeals.findViewById(R.id.menuMealPrice);
+        TextView mealName = (TextView) listViewMenuMeals.findViewById(R.id.purchaseMealName);
+        TextView mealPrice = (TextView) listViewMenuMeals.findViewById(R.id.purchaseStatus);
 
         Meal meal = meals.get(position);
 

@@ -68,11 +68,11 @@
             android:textColorLink="#FF9800" />
 
         <Button
-            android:id="@+id/cooks"
+            android:id="@+id/viewOrders"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:backgroundTint="#FF9800"
-            android:text="View Cooks" />
+            android:text="View Orders" />
 
         <Button
             android:id="@+id/logOutButton"

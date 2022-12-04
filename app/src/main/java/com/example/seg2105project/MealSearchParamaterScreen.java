@@ -16,6 +16,7 @@ public class MealSearchParamaterScreen extends AppCompatActivity {
     private Button searchForMeal;
     private Button homeButton;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

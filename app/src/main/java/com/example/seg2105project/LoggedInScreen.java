@@ -1,6 +1,5 @@
 package com.example.seg2105project;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -11,11 +10,8 @@ import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 
 /**
  * this class if for the main log in screen. all users will see this screen and then be redirected according to their account type.
@@ -29,7 +25,7 @@ public class LoggedInScreen extends AppCompatActivity {
     private Button logOutButton;
 
     private Button menuButton;
-    private Button viewCooks;
+    private Button viewOrders;
 
 
     @Override
@@ -60,11 +56,11 @@ public class LoggedInScreen extends AppCompatActivity {
             }
         });
 
-        viewCooks = findViewById(R.id.cooks);
-        viewCooks.setOnClickListener(new View.OnClickListener() {
+        viewOrders = findViewById(R.id.viewOrders);
+        viewOrders.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                openCooks();
+                openOrders();
             }
         });
 
@@ -83,8 +79,8 @@ public class LoggedInScreen extends AppCompatActivity {
         Intent intent = new Intent(this, MealSearchParamaterScreen.class);
         startActivity(intent);
     }
-    public void openCooks(){
-        Intent intent = new Intent(this, CookProfile.class);
+    public void openOrders(){
+        Intent intent = new Intent(this, CustomerPreviousOrders.class);
         startActivity(intent);
     }
 

@@ -37,7 +37,7 @@ public class MealSearchResults extends AppCompatActivity {
 
     private Button backButton;
 
-    boolean suspensionNoti;
+    boolean sus;
 
     private String mealNameParam;
     private int mealPriceParam;
@@ -82,22 +82,22 @@ public class MealSearchResults extends AppCompatActivity {
 
                     Meal meal = postSnapshot.getValue(Meal.class);
 
-                    DatabaseReference susCheck = accountRef.child(meal.getCookAssignedID()).child("suspension");
-                    susCheck.addListenerForSingleValueEvent(new ValueEventListener() {
+                    accountRef.child(meal.getCookAssignedID()).addListenerForSingleValueEvent(new ValueEventListener() {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot snapshot) {
-                            suspensionNoti = snapshot.getValue(Boolean.class);
+                            Cook cook = snapshot.getValue(Cook.class);
+                            sus = cook.getSuspension();
+
                         }
 
                         @Override
                         public void onCancelled(@NonNull DatabaseError error) {
                         }
                     });
-
-                    System.out.println(suspensionNoti);
-                    if (clientListAdd(suspensionNoti, meal)){
+                    if (clientListAdd(sus, meal)){
                         clientMealList.add(meal);
                     }
+
 
                 }
                 MenuMealList menuMealAdapter = new MenuMealList(MealSearchResults.this, clientMealList);
@@ -205,9 +205,12 @@ public class MealSearchResults extends AppCompatActivity {
 
     private void purchaseMeal(Meal meal){
         int num = getTotalPurchases(meal) + 1;
+        String id = accountRef.child(meal.getCookAssignedID()).child("yourPurchaseRequests").push().getKey();
+        Purchase purchase = new Purchase(meal, id, mAuth.getUid());
         accountRef.child(meal.getCookAssignedID()).child("totalPurchases").setValue(num);
-        accountRef.child(meal.getCookAssignedID()).child("yourPurchaseRequests").push().setValue(meal);
-        accountRef.child(mAuth.getUid()).child("yourOrders").push().setValue(meal);
+        accountRef.child(meal.getCookAssignedID()).child("yourPurchaseRequests").child(id).setValue(purchase);
+        accountRef.child(mAuth.getUid()).child("yourOrders").child(id).setValue(purchase);
+
         Toast.makeText(MealSearchResults.this, "Your order has been processed. Please check your orders to view its status." , Toast.LENGTH_LONG).show();
     }
 
