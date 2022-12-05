@@ -5,6 +5,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -38,10 +39,10 @@ public class CookProfile extends AppCompatActivity {
     int topFrac;
     int bottomFrac;
     int n;
-    String city;
-    String country;
-    String postal;
-    String street;
+    public String city;
+    private String country;
+    private String postal;
+    private String street;
 
 
     @Override
@@ -52,6 +53,11 @@ public class CookProfile extends AppCompatActivity {
         user = FirebaseAuth.getInstance().getCurrentUser();
         ref = FirebaseDatabase.getInstance().getReference("accounts");
         userID = user.getUid();
+
+        cookRating = findViewById(R.id.cookProfileRating);
+        cookIntro = findViewById(R.id.cookProfileIntro);
+        cookAdress = findViewById(R.id.cookAddress);
+        profileName = findViewById(R.id.profileNameIntro);
 
 
         ref.child(userID).child("name").addValueEventListener(new ValueEventListener() {
@@ -73,6 +79,7 @@ public class CookProfile extends AppCompatActivity {
             public void onDataChange(DataSnapshot dataSnapshot) {
                 int n = dataSnapshot.getValue(Integer.class);
                 topFrac = n;
+                cookRating.setText("Ratings: " + topFrac + "/" + bottomFrac);
                 //do what you want with the email
             }
 
@@ -86,6 +93,7 @@ public class CookProfile extends AppCompatActivity {
             public void onDataChange(DataSnapshot dataSnapshot) {
                 int n = dataSnapshot.getValue(Integer.class);
                 bottomFrac = n;
+                cookRating.setText("Ratings: " + topFrac + "/" + bottomFrac);
                 //do what you want with the email
             }
 
@@ -95,25 +103,26 @@ public class CookProfile extends AppCompatActivity {
             }
         });
 
-//        ref.child(userID).child("introduction").addValueEventListener(new ValueEventListener() {
-//            @Override
-//            public void onDataChange(DataSnapshot dataSnapshot) {
-//                int n = dataSnapshot.getValue(Integer.class);
-//                bottomFrac = n;
-//                //do what you want with the email
-//            }
-//
-//            @Override
-//            public void onCancelled(DatabaseError databaseError) {
-//
-//            }
-//        });
+        ref.child(userID).child("suspension").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                boolean b = dataSnapshot.getValue(boolean.class);
+                cookIntro.setText("Suspension: " + b );
+
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
 
         ref.child(userID).child("address").child("city").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                String s = dataSnapshot.getValue(String.class);
-                city = s;
+                String v = dataSnapshot.getValue(String.class);
+                city = v;
+                cookAdress.setText("Address: " + city + ", " + country + ", " + postal + ", " + street);
 
             }
             @Override
@@ -126,6 +135,8 @@ public class CookProfile extends AppCompatActivity {
             public void onDataChange(DataSnapshot dataSnapshot) {
                 String s = dataSnapshot.getValue(String.class);
                 country = s;
+                cookAdress.setText("Address: " + city + ", " + country + ", " + postal + ", " + street);
+
             }
             @Override
             public void onCancelled(DatabaseError databaseError) {
@@ -137,6 +148,8 @@ public class CookProfile extends AppCompatActivity {
             public void onDataChange(DataSnapshot dataSnapshot) {
                 String s = dataSnapshot.getValue(String.class);
                 postal = s;
+                cookAdress.setText("Address: " + city + ", " + country + ", " + postal + ", " + street);
+
             }
             @Override
             public void onCancelled(DatabaseError databaseError) {
@@ -148,6 +161,8 @@ public class CookProfile extends AppCompatActivity {
             public void onDataChange(DataSnapshot dataSnapshot) {
                 String s = dataSnapshot.getValue(String.class);
                 street = s;
+                cookAdress.setText("Address: " + city + ", " + country + ", " + postal + ", " + street);
+
             }
             @Override
             public void onCancelled(DatabaseError databaseError) {
@@ -155,22 +170,11 @@ public class CookProfile extends AppCompatActivity {
             }
         });
 
-
-
-        cookRating = findViewById(R.id.cookProfileRating);
-        cookIntro = findViewById(R.id.cookProfileIntro);
-        cookAdress = findViewById(R.id.cookAddress);
-        profileName = findViewById(R.id.profileNameIntro);
-
-
-        //topFrac = ref.child(userID).child("rating").child("totalRaters");
-        //bottomFrac = ref.child(userID).child("rating").child("totalRatings");
-
         cookRating.setText("Ratings: " + topFrac + "/" + bottomFrac);
-        cookIntro.setText("Introduction: ");
-        cookAdress.setText("Address: " + city + ", " + country + ", " + postal + ", " + street);
+        //cookAdress.setText("Address: " + city + ", " + country + ", " + postal + ", " + street);
 
     }
+
 
 
 
