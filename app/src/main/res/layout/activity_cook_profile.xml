@@ -36,7 +36,7 @@
             android:layout_marginRight="10sp"
             android:layout_marginBottom="10sp"
             android:fontFamily="@font/alata"
-            android:text="Rating: x/5"
+            android:text="Rating: "
             android:textSize="20sp" />
 
         <TextView
