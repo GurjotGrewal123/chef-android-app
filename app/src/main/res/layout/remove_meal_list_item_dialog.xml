@@ -12,6 +12,7 @@
             android:id="@+id/mealPrompt"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="10sp"
             android:fontFamily="sans-serif"
             android:gravity="center_horizontal"
             android:text="Would you  like to remove this item?"
