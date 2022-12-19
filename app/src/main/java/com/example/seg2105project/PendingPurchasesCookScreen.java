@@ -54,6 +54,7 @@ public class PendingPurchasesCookScreen extends AppCompatActivity {
                 for(DataSnapshot postSnapshot: dataSnapshot.getChildren()){
 
                     Purchase purchase = postSnapshot.getValue(Purchase.class);
+                    System.out.println(purchase.getId());
                     purchasesList.add(purchase);
                 }
                 PurchaseList purchaseAdapter = new PurchaseList(PendingPurchasesCookScreen.this, purchasesList);
